@@ -90,9 +90,9 @@
 //                        'zoomIn': 'img/twemoji/1f50d.svg',
 //                        'zoomOut': 'img/twemoji/1f50e.svg'
                     },
-                    minCollision: 60,
+                    minCollision: 45,
                     neo4jData: dprime,
-                    nodeRadius: 25,
+                    nodeRadius: 20,
                     onNodeDoubleClick: function(node) {
                       return;
                         switch(node.id) {
@@ -110,7 +110,6 @@
                     onRelationshipDoubleClick: function(relationship) {
                         console.log('double click on relationship: ' + JSON.stringify(relationship));
                     },
-                    zoomFit: true
                 });
             }
 

@@ -635,6 +635,7 @@ function addEdgeIds(dataInit){
     return dataCopy;
 }
 
+
 function convertToNeo4j(obj){
 
     const attributes = ['type', 'Country', 'Branch', 'CreationDate', 'CusOrAccType']
@@ -665,8 +666,8 @@ function convertToNeo4j(obj){
         columns: ["user", "entity"],
         data: [{
             graph: {
-                nodes: nodes,
-                relationships: relationships
+                nodes: nodes.slice(1),
+                relationships: relationships.slice(2)
             }}]
     }]
 
