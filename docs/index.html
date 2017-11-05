@@ -23,6 +23,7 @@
         <a href="https://github.com/eisman/neo4jd3"><img style="cursor: pointer; position: absolute; top: 0; right: 0; border: 0;" src="img/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" data-canonical-src="img/forkme_right_gray_6d6d6d.png"></a>
 
         <!-- Scripts -->
+        <script src="js/data.js"></script>
         <script src="js/d3.min.js"></script>
         <script src="js/neo4jd3.js?v=0.0.1"></script>
         <script type="text/javascript">
@@ -90,9 +91,10 @@
 //                        'zoomOut': 'img/twemoji/1f50e.svg'
                     },
                     minCollision: 60,
-                    neo4jDataUrl: 'json/neo4jData.json',
+                    neo4jData: dprime,
                     nodeRadius: 25,
                     onNodeDoubleClick: function(node) {
+                      return;
                         switch(node.id) {
                             case '25':
                                 // Google
