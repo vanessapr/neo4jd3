@@ -1,4 +1,4 @@
-const data = {
+const _data = {
   "nodes": [{
     "id": 0,
     "name": "Finnace USA ",

@@ -1,0 +1,1922 @@
+{
+  "results": [{
+      "columns": ["user","entity"],
+      "data": [{
+          "graph": {
+            "nodes": [{
+                "id": 0,
+                "labels": [
+                  "Finnace USA"
+                ],
+                "properties": {
+                  "type": "Customer",
+                  "Country": "New Zealand",
+                  "Branch": "Head Office",
+                  "CreationDate": "2017-10-10",
+                  "CusOrAccType": "CUSTOMER"
+                },
+                "index": 0,
+                "x": 453.42256005677143,
+                "y": 186.72380449758413,
+                "vy": -0.06183355295543589,
+                "vx": -0.04260721147549398
+              },
+              {
+                "id": 1,
+                "labels": [
+                  "8983996"
+                ],
+                "properties": {
+                  "type": "Account",
+                  "Branch": "Head Office",
+                  "CreationDate": "2017-10-10",
+                  "CusOrAccType": "Savings"
+                },
+                "index": 1,
+                "x": 449.05595696460233,
+                "y": 67.06181933299708,
+                "vy": -0.06790079896752035,
+                "vx": -0.04078798328670967
+              },
+              {
+                "id": 2,
+                "labels": [
+                  "01828675"
+                ],
+                "properties": {
+                  "type": "OtherBankAccount",
+                  "Branch": "010"
+                },
+                "index": 2,
+                "x": 758.0423013014864,
+                "y": -4.083433072567146,
+                "vy": -0.06691677327935386,
+                "vx": -0.03055695369913597
+              },
+              {
+                "id": 3,
+                "labels": [
+                  "11828675"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 3,
+                "x": 338.9462585407054,
+                "y": -109.03948545630296,
+                "vy": -0.06953621835438491,
+                "vx": -0.04496910986939604
+              },
+              {
+                "id": 4,
+                "labels": [
+                  "12460819"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 4,
+                "x": 356.08750514156884,
+                "y": 369.93082714583744,
+                "vy": -0.05270389264747746,
+                "vx": -0.044674486376114125
+              },
+              {
+                "id": 5,
+                "labels": [
+                  "12896067"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 5,
+                "x": 440.4681612155959,
+                "y": -172.64134401397712,
+                "vy": -0.07124659993331531,
+                "vx": -0.04053682041948003
+              },
+              {
+                "id": 6,
+                "labels": [
+                  "13150046"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 6,
+                "x": 563.5712701639858,
+                "y": 362.61217203534915,
+                "vy": -0.05524144623114653,
+                "vx": -0.03933472767303708
+              },
+              {
+                "id": 7,
+                "labels": [
+                  "13795215"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 7,
+                "x": 245.96999918719567,
+                "y": 194.03325585634605,
+                "vy": -0.059071099476402225,
+                "vx": -0.048666475989455955
+              },
+              {
+                "id": 8,
+                "labels": [
+                  "1399386800"
+                ],
+                "properties": {
+                  "type": "OtherBankAccount",
+                  "Branch": "010"
+                },
+                "index": 8,
+                "x": 550.4349622548432,
+                "y": 3.4026097657954257,
+                "vy": -0.06828655099667005,
+                "vx": -0.03301900832525964
+              },
+              {
+                "id": 9,
+                "labels": [
+                  "14352860"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 9,
+                "x": 237.35659973427687,
+                "y": -45.521581915432684,
+                "vy": -0.0658698127549588,
+                "vx": -0.04782370564363279
+              },
+              {
+                "id": 10,
+                "labels": [
+                  "15154946"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 10,
+                "x": 241.70227869450645,
+                "y": 74.2970786027096,
+                "vy": -0.0634286874001182,
+                "vx": -0.04916218551189486
+              },
+              {
+                "id": 11,
+                "labels": [
+                  "1560772"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 11,
+                "x": 652.1400445817005,
+                "y": -60.1352033989579,
+                "vy": -0.07148782140430412,
+                "vx": -0.03284953700628616
+              },
+              {
+                "id": 12,
+                "labels": [
+                  "17381660"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 12,
+                "x": 347.64596401803647,
+                "y": 130.44555124082225,
+                "vy": -0.06111678306693511,
+                "vx": -0.04782492931216497
+              },
+              {
+                "id": 13,
+                "labels": [
+                  "17521589"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 13,
+                "x": 660.7939828656586,
+                "y": 179.31749782293645,
+                "vy": -0.06231388120813798,
+                "vx": -0.03465027828683733
+              },
+              {
+                "id": 14,
+                "labels": [
+                  "18182343"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 14,
+                "x": 250.25962525360939,
+                "y": 313.74319222227706,
+                "vy": -0.05410744577633765,
+                "vx": -0.04869826296991986
+              },
+              {
+                "id": 15,
+                "labels": [
+                  "18436572"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 15,
+                "x": 766.6464213703624,
+                "y": 235.40065479763243,
+                "vy": -0.05848282095745707,
+                "vx": -0.031195831624565407
+              },
+              {
+                "id": 16,
+                "labels": [
+                  "19165510"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 16,
+                "x": 140.16947970554128,
+                "y": 137.75770309426792,
+                "vy": -0.058406695580432634,
+                "vx": -0.053337125353258304
+              },
+              {
+                "id": 17,
+                "labels": [
+                  "19294687"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 17,
+                "x": 457.68422555296456,
+                "y": 306.3596347857951,
+                "vy": -0.05513464769641132,
+                "vx": -0.04198418613109606
+              },
+              {
+                "id": 18,
+                "labels": [
+                  "2262305"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 18,
+                "x": 444.78912897887375,
+                "y": -52.817546863488424,
+                "vy": -0.06893376422955508,
+                "vx": -0.04128820997439306
+              },
+              {
+                "id": 19,
+                "labels": [
+                  "254762"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 19,
+                "x": 546.2798787307468,
+                "y": -116.31986646029688,
+                "vy": -0.07296289323771371,
+                "vx": -0.0361299845253125
+              },
+              {
+                "id": 20,
+                "labels": [
+                  "4162351"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 20,
+                "x": 647.9103629530821,
+                "y": -179.90870289878072,
+                "vy": -0.07498316449948093,
+                "vx": -0.03422096500049175
+              },
+              {
+                "id": 21,
+                "labels": [
+                  "621062"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 21,
+                "x": 554.8356167342386,
+                "y": 123.05414484922751,
+                "vy": -0.06196469904718858,
+                "vx": -0.03564236917373504
+              },
+              {
+                "id": 22,
+                "labels": [
+                  "6270288"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 22,
+                "x": 461.95799365615494,
+                "y": 426.0787080439335,
+                "vy": -0.050379906444866236,
+                "vx": -0.04164055880000866
+              },
+              {
+                "id": 23,
+                "labels": [
+                  "6338205"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 23,
+                "x": 351.8683200712045,
+                "y": 250.15900405857298,
+                "vy": -0.056236736849540406,
+                "vx": -0.04628543954343638
+              },
+              {
+                "id": 24,
+                "labels": [
+                  "6909150"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 24,
+                "x": 343.23796567053125,
+                "y": 10.745678738697627,
+                "vy": -0.06631871216298875,
+                "vx": -0.04504571789977133
+              },
+              {
+                "id": 25,
+                "labels": [
+                  "8225439"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 25,
+                "x": 762.3193207121612,
+                "y": 115.64695582374993,
+                "vy": -0.06243290374923831,
+                "vx": -0.030294953935702917
+              },
+              {
+                "id": 26,
+                "labels": [
+                  "8335808"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 26,
+                "x": 665.104256468569,
+                "y": 299.07238497032154,
+                "vy": -0.058400466221969156,
+                "vx": -0.035164063370488725
+              },
+              {
+                "id": 27,
+                "labels": [
+                  "930999"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 27,
+                "x": 559.2246848787371,
+                "y": 242.82642428730267,
+                "vy": -0.058447727795377234,
+                "vx": -0.03798639016766058
+              },
+              {
+                "id": 28,
+                "labels": [
+                  "9440137"
+                ],
+                "properties": {
+                  "type": "OwnBankAccount",
+                  "Branch": "010"
+                },
+                "index": 28,
+                "x": 656.4061613622014,
+                "y": 59.47960317964281,
+                "vy": -0.06431242508035666,
+                "vx": -0.032335708743436366
+              }
+            ],
+            "relationships": [
+              {
+                "id": 0,
+                "type": "Account",
+                "startNode": 0,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 0,
+                  "labels": [
+                    "Finnace USA"
+                  ],
+                  "properties": {
+                    "type": "Customer",
+                    "Country": "New Zealand",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "CUSTOMER"
+                  },
+                  "index": 0,
+                  "x": 453.42256005677143,
+                  "y": 186.72380449758413,
+                  "vy": -0.06183355295543589,
+                  "vx": -0.04260721147549398
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 0
+              },
+              {
+                "id": 1,
+                "type": "CR",
+                "startNode": 1,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 1
+              },
+              {
+                "id": 2,
+                "type": "CR",
+                "startNode": 2,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 2,
+                  "labels": [
+                    "01828675"
+                  ],
+                  "properties": {
+                    "type": "OtherBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 2,
+                  "x": 758.0423013014864,
+                  "y": -4.083433072567146,
+                  "vy": -0.06691677327935386,
+                  "vx": -0.03055695369913597
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 2
+              },
+              {
+                "id": 3,
+                "type": "CR",
+                "startNode": 3,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 3,
+                  "labels": [
+                    "11828675"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 3,
+                  "x": 338.9462585407054,
+                  "y": -109.03948545630296,
+                  "vy": -0.06953621835438491,
+                  "vx": -0.04496910986939604
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 3
+              },
+              {
+                "id": 4,
+                "type": "CR",
+                "startNode": 4,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 4,
+                  "labels": [
+                    "12460819"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 4,
+                  "x": 356.08750514156884,
+                  "y": 369.93082714583744,
+                  "vy": -0.05270389264747746,
+                  "vx": -0.044674486376114125
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 4
+              },
+              {
+                "id": 5,
+                "type": "CR",
+                "startNode": 5,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 5,
+                  "labels": [
+                    "12896067"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 5,
+                  "x": 440.4681612155959,
+                  "y": -172.64134401397712,
+                  "vy": -0.07124659993331531,
+                  "vx": -0.04053682041948003
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 5
+              },
+              {
+                "id": 6,
+                "type": "CR",
+                "startNode": 6,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 6,
+                  "labels": [
+                    "13150046"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 6,
+                  "x": 563.5712701639858,
+                  "y": 362.61217203534915,
+                  "vy": -0.05524144623114653,
+                  "vx": -0.03933472767303708
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 6
+              },
+              {
+                "id": 7,
+                "type": "CR",
+                "startNode": 7,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 7,
+                  "labels": [
+                    "13795215"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 7,
+                  "x": 245.96999918719567,
+                  "y": 194.03325585634605,
+                  "vy": -0.059071099476402225,
+                  "vx": -0.048666475989455955
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 7
+              },
+              {
+                "id": 8,
+                "type": "CR",
+                "startNode": 8,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 8,
+                  "labels": [
+                    "1399386800"
+                  ],
+                  "properties": {
+                    "type": "OtherBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 8,
+                  "x": 550.4349622548432,
+                  "y": 3.4026097657954257,
+                  "vy": -0.06828655099667005,
+                  "vx": -0.03301900832525964
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 8
+              },
+              {
+                "id": 9,
+                "type": "CR",
+                "startNode": 9,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 9,
+                  "labels": [
+                    "14352860"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 9,
+                  "x": 237.35659973427687,
+                  "y": -45.521581915432684,
+                  "vy": -0.0658698127549588,
+                  "vx": -0.04782370564363279
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 9
+              },
+              {
+                "id": 10,
+                "type": "CR",
+                "startNode": 9,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 9,
+                  "labels": [
+                    "14352860"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 9,
+                  "x": 237.35659973427687,
+                  "y": -45.521581915432684,
+                  "vy": -0.0658698127549588,
+                  "vx": -0.04782370564363279
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 2,
+                "index": 10
+              },
+              {
+                "id": 11,
+                "type": "CR",
+                "startNode": 10,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 10,
+                  "labels": [
+                    "15154946"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 10,
+                  "x": 241.70227869450645,
+                  "y": 74.2970786027096,
+                  "vy": -0.0634286874001182,
+                  "vx": -0.04916218551189486
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 11
+              },
+              {
+                "id": 12,
+                "type": "CR",
+                "startNode": 11,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 11,
+                  "labels": [
+                    "1560772"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 11,
+                  "x": 652.1400445817005,
+                  "y": -60.1352033989579,
+                  "vy": -0.07148782140430412,
+                  "vx": -0.03284953700628616
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 12
+              },
+              {
+                "id": 13,
+                "type": "CR",
+                "startNode": 12,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 12,
+                  "labels": [
+                    "17381660"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 12,
+                  "x": 347.64596401803647,
+                  "y": 130.44555124082225,
+                  "vy": -0.06111678306693511,
+                  "vx": -0.04782492931216497
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 13
+              },
+              {
+                "id": 14,
+                "type": "CR",
+                "startNode": 13,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 13,
+                  "labels": [
+                    "17521589"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 13,
+                  "x": 660.7939828656586,
+                  "y": 179.31749782293645,
+                  "vy": -0.06231388120813798,
+                  "vx": -0.03465027828683733
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 14
+              },
+              {
+                "id": 15,
+                "type": "CR",
+                "startNode": 14,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 14,
+                  "labels": [
+                    "18182343"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 14,
+                  "x": 250.25962525360939,
+                  "y": 313.74319222227706,
+                  "vy": -0.05410744577633765,
+                  "vx": -0.04869826296991986
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 15
+              },
+              {
+                "id": 16,
+                "type": "CR",
+                "startNode": 14,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 14,
+                  "labels": [
+                    "18182343"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 14,
+                  "x": 250.25962525360939,
+                  "y": 313.74319222227706,
+                  "vy": -0.05410744577633765,
+                  "vx": -0.04869826296991986
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 2,
+                "index": 16
+              },
+              {
+                "id": 17,
+                "type": "CR",
+                "startNode": 15,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 15,
+                  "labels": [
+                    "18436572"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 15,
+                  "x": 766.6464213703624,
+                  "y": 235.40065479763243,
+                  "vy": -0.05848282095745707,
+                  "vx": -0.031195831624565407
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 17
+              },
+              {
+                "id": 18,
+                "type": "CR",
+                "startNode": 15,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 15,
+                  "labels": [
+                    "18436572"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 15,
+                  "x": 766.6464213703624,
+                  "y": 235.40065479763243,
+                  "vy": -0.05848282095745707,
+                  "vx": -0.031195831624565407
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 2,
+                "index": 18
+              },
+              {
+                "id": 19,
+                "type": "CR",
+                "startNode": 16,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 16,
+                  "labels": [
+                    "19165510"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 16,
+                  "x": 140.16947970554128,
+                  "y": 137.75770309426792,
+                  "vy": -0.058406695580432634,
+                  "vx": -0.053337125353258304
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 19
+              },
+              {
+                "id": 21,
+                "type": "CR",
+                "startNode": 17,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 17,
+                  "labels": [
+                    "19294687"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 17,
+                  "x": 457.68422555296456,
+                  "y": 306.3596347857951,
+                  "vy": -0.05513464769641132,
+                  "vx": -0.04198418613109606
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 21
+              },
+              {
+                "id": 20,
+                "type": "CR",
+                "startNode": 17,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 17,
+                  "labels": [
+                    "19294687"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 17,
+                  "x": 457.68422555296456,
+                  "y": 306.3596347857951,
+                  "vy": -0.05513464769641132,
+                  "vx": -0.04198418613109606
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 2,
+                "index": 20
+              },
+              {
+                "id": 22,
+                "type": "CR",
+                "startNode": 18,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 18,
+                  "labels": [
+                    "2262305"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 18,
+                  "x": 444.78912897887375,
+                  "y": -52.817546863488424,
+                  "vy": -0.06893376422955508,
+                  "vx": -0.04128820997439306
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 22
+              },
+              {
+                "id": 23,
+                "type": "CR",
+                "startNode": 19,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 19,
+                  "labels": [
+                    "254762"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 19,
+                  "x": 546.2798787307468,
+                  "y": -116.31986646029688,
+                  "vy": -0.07296289323771371,
+                  "vx": -0.0361299845253125
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 23
+              },
+              {
+                "id": 24,
+                "type": "CR",
+                "startNode": 20,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 20,
+                  "labels": [
+                    "4162351"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 20,
+                  "x": 647.9103629530821,
+                  "y": -179.90870289878072,
+                  "vy": -0.07498316449948093,
+                  "vx": -0.03422096500049175
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 24
+              },
+              {
+                "id": 25,
+                "type": "CR",
+                "startNode": 21,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 21,
+                  "labels": [
+                    "621062"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 21,
+                  "x": 554.8356167342386,
+                  "y": 123.05414484922751,
+                  "vy": -0.06196469904718858,
+                  "vx": -0.03564236917373504
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 25
+              },
+              {
+                "id": 26,
+                "type": "CR",
+                "startNode": 22,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 22,
+                  "labels": [
+                    "6270288"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 22,
+                  "x": 461.95799365615494,
+                  "y": 426.0787080439335,
+                  "vy": -0.050379906444866236,
+                  "vx": -0.04164055880000866
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 26
+              },
+              {
+                "id": 27,
+                "type": "CR",
+                "startNode": 23,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 23,
+                  "labels": [
+                    "6338205"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 23,
+                  "x": 351.8683200712045,
+                  "y": 250.15900405857298,
+                  "vy": -0.056236736849540406,
+                  "vx": -0.04628543954343638
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 27
+              },
+              {
+                "id": 28,
+                "type": "CR",
+                "startNode": 24,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 24,
+                  "labels": [
+                    "6909150"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 24,
+                  "x": 343.23796567053125,
+                  "y": 10.745678738697627,
+                  "vy": -0.06631871216298875,
+                  "vx": -0.04504571789977133
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 28
+              },
+              {
+                "id": 29,
+                "type": "CR",
+                "startNode": 25,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 25,
+                  "labels": [
+                    "8225439"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 25,
+                  "x": 762.3193207121612,
+                  "y": 115.64695582374993,
+                  "vy": -0.06243290374923831,
+                  "vx": -0.030294953935702917
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 29
+              },
+              {
+                "id": 30,
+                "type": "CR",
+                "startNode": 26,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 26,
+                  "labels": [
+                    "8335808"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 26,
+                  "x": 665.104256468569,
+                  "y": 299.07238497032154,
+                  "vy": -0.058400466221969156,
+                  "vx": -0.035164063370488725
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 30
+              },
+              {
+                "id": 31,
+                "type": "CR",
+                "startNode": 26,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 26,
+                  "labels": [
+                    "8335808"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 26,
+                  "x": 665.104256468569,
+                  "y": 299.07238497032154,
+                  "vy": -0.058400466221969156,
+                  "vx": -0.035164063370488725
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 2,
+                "index": 31
+              },
+              {
+                "id": 32,
+                "type": "CR",
+                "startNode": 27,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 27,
+                  "labels": [
+                    "930999"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 27,
+                  "x": 559.2246848787371,
+                  "y": 242.82642428730267,
+                  "vy": -0.058447727795377234,
+                  "vx": -0.03798639016766058
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 32
+              },
+              {
+                "id": 33,
+                "type": "CR",
+                "startNode": 28,
+                "endNode": 1,
+                "properties": {
+                  "from": "10"
+                },
+                "source": {
+                  "id": 28,
+                  "labels": [
+                    "9440137"
+                  ],
+                  "properties": {
+                    "type": "OwnBankAccount",
+                    "Branch": "010"
+                  },
+                  "index": 28,
+                  "x": 656.4061613622014,
+                  "y": 59.47960317964281,
+                  "vy": -0.06431242508035666,
+                  "vx": -0.032335708743436366
+                },
+                "target": {
+                  "id": 1,
+                  "labels": [
+                    "8983996"
+                  ],
+                  "properties": {
+                    "type": "Account",
+                    "Branch": "Head Office",
+                    "CreationDate": "2017-10-10",
+                    "CusOrAccType": "Savings"
+                  },
+                  "index": 1,
+                  "x": 449.05595696460233,
+                  "y": 67.06181933299708,
+                  "vy": -0.06790079896752035,
+                  "vx": -0.04078798328670967
+                },
+                "linknum": 1,
+                "index": 33
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

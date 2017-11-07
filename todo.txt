@@ -1,0 +1,3 @@
+* Get all data like name and amount to show
+* Update icons with bank
+* Edge width corresponds to transaction size

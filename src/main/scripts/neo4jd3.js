@@ -242,16 +242,14 @@ function Neo4jD3(_selector, _options) {
                    });
     }
 
-    function appendRandomDataToNode(d, maxNodesToGenerate) {
-        var data = randomD3Data(d, maxNodesToGenerate);
-        updateWithNeo4jData(data);
-    }
 
     function appendRelationship() {
         return relationship.enter()
                            .append('g')
                            .attr('class', 'relationship')
-                           .on('dblclick', function(d) {
+                           .each(function(d){
+                               console.log(d);
+                           }).on('dblclick', function(d) {
                                if (typeof options.onRelationshipDoubleClick === 'function') {
                                    options.onRelationshipDoubleClick(d);
                                }
@@ -633,57 +631,6 @@ function Neo4jD3(_selector, _options) {
         return graph;
     }
 
-    function randomD3Data(d, maxNodesToGenerate) {
-        var data = {
-                nodes: [],
-                relationships: []
-            },
-            i,
-            label,
-            node,
-            numNodes = (maxNodesToGenerate * Math.random() << 0) + 1,
-            relationship,
-            s = size();
-
-        for (i = 0; i < numNodes; i++) {
-            label = randomLabel();
-
-            node = {
-                id: s.nodes + 1 + i,
-                labels: [label],
-                properties: {
-                    random: label
-                },
-                x: d.x,
-                y: d.y
-            };
-
-            data.nodes[data.nodes.length] = node;
-
-            relationship = {
-                id: s.relationships + 1 + i,
-                type: label.toUpperCase(),
-                startNode: d.id,
-                endNode: s.nodes + 1 + i,
-                properties: {
-                    from: Date.now()
-                },
-                source: d.id,
-                target: s.nodes + 1 + i,
-                linknum: s.relationships + 1 + i
-            };
-
-            data.relationships[data.relationships.length] = relationship;
-        }
-
-        return data;
-    }
-
-    function randomLabel() {
-        var icons = Object.keys(options.iconMap);
-        return icons[icons.length * Math.random() << 0];
-    }
-
     function rotate(cx, cy, x, y, angle) {
         var radians = (Math.PI / 180) * angle,
             cos = Math.cos(radians),
@@ -915,8 +862,8 @@ function Neo4jD3(_selector, _options) {
         Array.prototype.push.apply(relationships, r);
 
         relationship = svgRelationships.selectAll('.relationship')
-                                       .data(relationships, function(d) { return d.id; });
-
+            .data(relationships, function(d) { return d.id; });
+        
         var relationshipEnter = appendRelationshipToGraph();
 
         relationship = relationshipEnter.relationship.merge(relationship);
@@ -929,6 +876,16 @@ function Neo4jD3(_selector, _options) {
 
         relationshipText = svg.selectAll('.relationship .text');
         relationshipText = relationshipEnter.text.merge(relationshipText);
+    }
+
+    // Fill in absent values with null
+    function getAmounts(relationships, mean){
+        return relationships.map(function(relationship, idx) {
+            if (relationship.properties.hasOwnProperty('Amount')){
+                return relationship.properties.Amount;
+            }
+            return null;
+        });
     }
 
     function version() {
@@ -959,9 +916,7 @@ function Neo4jD3(_selector, _options) {
     init(_selector, _options);
 
     return {
-        appendRandomDataToNode: appendRandomDataToNode,
         neo4jDataToD3Data: neo4jDataToD3Data,
-        randomD3Data: randomD3Data,
         size: size,
         updateWithD3Data: updateWithD3Data,
         updateWithNeo4jData: updateWithNeo4jData,
