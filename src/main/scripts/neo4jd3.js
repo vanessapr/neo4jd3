@@ -8,7 +8,7 @@ function Neo4jD3(_selector, _options) {
         justLoaded = false,
         numClasses = 0,
         options = {
-            arrowSize: 4,
+            arrowSize: 2,
             colors: colors(),
             highlight: undefined,
             iconMap: fontAwesomeIcons(),
@@ -261,11 +261,17 @@ function Neo4jD3(_selector, _options) {
                            });
     }
 
+    function calculateStrokeWidth(){
+
+    };
+
     function appendOutlineToRelationship(r) {
         return r.append('path')
                 .attr('class', 'outline')
                 .attr('fill', '#a5abb6')
-                .attr('stroke', 'none');
+                .attr('stroke-width', 2)
+                .attr('stroke', '#a5abb6');
+
     }
 
     function appendOverlayToRelationship(r) {
@@ -276,12 +282,8 @@ function Neo4jD3(_selector, _options) {
     function appendTextToRelationship(r) {
         return r.append('text')
                 .attr('class', 'text')
-                .attr('fill', '#000000')
-                .attr('font-size', '8px')
-                .attr('pointer-events', 'none')
-                .attr('text-anchor', 'middle')
                 .text(function(d) {
-                    return d.type;
+                    return '';
                 });
     }
 
@@ -738,10 +740,10 @@ function Neo4jD3(_selector, _options) {
                     rotatedPointG2 = rotatePoint(center, { x: d.target.x - d.source.x - textMargin.x, y: d.target.y - d.source.y - textMargin.y }, angle);
 
                 return 'M ' + rotatedPointA1.x + ' ' + rotatedPointA1.y +
-                       ' L ' + rotatedPointB1.x + ' ' + rotatedPointB1.y +
+                       //' L ' + rotatedPointB1.x + ' ' + rotatedPointB1.y +
                        ' L ' + rotatedPointC1.x + ' ' + rotatedPointC1.y +
                        ' L ' + rotatedPointD1.x + ' ' + rotatedPointD1.y +
-                       ' Z M ' + rotatedPointA2.x + ' ' + rotatedPointA2.y +
+                       //' Z M ' + rotatedPointA2.x + ' ' + rotatedPointA2.y +
                        ' L ' + rotatedPointB2.x + ' ' + rotatedPointB2.y +
                        ' L ' + rotatedPointC2.x + ' ' + rotatedPointC2.y +
                        ' L ' + rotatedPointD2.x + ' ' + rotatedPointD2.y +
