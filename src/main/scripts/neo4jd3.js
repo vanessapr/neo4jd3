@@ -247,9 +247,7 @@ function Neo4jD3(_selector, _options) {
         return relationship.enter()
                            .append('g')
                            .attr('class', 'relationship')
-                           .each(function(d){
-                               console.log(d);
-                           }).on('dblclick', function(d) {
+                           .on('dblclick', function(d) {
                                if (typeof options.onRelationshipDoubleClick === 'function') {
                                    options.onRelationshipDoubleClick(d);
                                }
@@ -265,13 +263,14 @@ function Neo4jD3(_selector, _options) {
 
     };
 
-    function appendOutlineToRelationship(r) {
+    function appendOutlineToRelationship(r, normalizedAmounts) {
         return r.append('path')
                 .attr('class', 'outline')
                 .attr('fill', '#a5abb6')
-                .attr('stroke-width', 2)
+                .attr('stroke-width', function(d,i){
+                    return 1 + 3 * normalizedAmounts[i];
+                })
                 .attr('stroke', '#a5abb6');
-
     }
 
     function appendOverlayToRelationship(r) {
@@ -287,10 +286,10 @@ function Neo4jD3(_selector, _options) {
                 });
     }
 
-    function appendRelationshipToGraph() {
+    function appendRelationshipToGraph(normalizedAmounts) {
         var relationship = appendRelationship(),
             text = appendTextToRelationship(relationship),
-            outline = appendOutlineToRelationship(relationship),
+            outline = appendOutlineToRelationship(relationship, normalizedAmounts),
             overlay = appendOverlayToRelationship(relationship);
 
         return {
@@ -788,6 +787,41 @@ function Neo4jD3(_selector, _options) {
         });
     }
 
+
+    function getAmountsFromObjects(relationshipObjects){
+        var amounts = relationshipObjects.map(function(relationship, i){
+            return relationship.properties.Amount;
+        })
+
+        var noNulls = amounts.filter(function(x){
+            return x != null;
+        });
+
+        var mean = d3.mean(noNulls);
+
+        var amountsFinal = amounts.map(function(x){
+
+            var value = x == null? mean: x;
+            return +value;
+        })
+
+        return amountsFinal;
+    }
+
+    var amounts = getAmountsFromObjects(data.results[0].data[0].graph.relationships);
+
+    function normalize(amounts){
+
+        var min = d3.min(amounts);
+        var max = d3.max(amounts);
+
+        var ratios = amounts.map(function(x){
+            return (x - min) / (max - min);
+        })
+
+        return ratios;
+    }
+
     function toString(d) {
         var s = d.labels ? d.labels[0] : d.type;
 
@@ -865,8 +899,11 @@ function Neo4jD3(_selector, _options) {
 
         relationship = svgRelationships.selectAll('.relationship')
             .data(relationships, function(d) { return d.id; });
-        
-        var relationshipEnter = appendRelationshipToGraph();
+
+        var amounts = getAmounts(relationships);
+        var normalizedAmounts = normalize(amounts);
+
+        var relationshipEnter = appendRelationshipToGraph(normalizedAmounts);
 
         relationship = relationshipEnter.relationship.merge(relationship);
 

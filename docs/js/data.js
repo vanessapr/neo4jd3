@@ -1,7 +1,9 @@
 function createProperties(x, attributes){
     const properties = {};
     attributes.forEach(function(attribute){
-        if (typeof(x[attribute]) !== 'undefined'){
+        const value = x[attribute];
+
+        if (typeof(value) !== 'undefined' && value !== ''){
             properties[attribute] = x[attribute];
         }
     })
