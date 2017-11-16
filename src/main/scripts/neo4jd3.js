@@ -268,7 +268,7 @@ function Neo4jD3(_selector, _options) {
                 .attr('class', 'outline')
                 .attr('fill', '#a5abb6')
                 .attr('stroke-width', function(d,i){
-                    return 1 + 3 * normalizedAmounts[i];
+                    return .5 + 6 * normalizedAmounts[i];
                 })
                 .attr('stroke', '#a5abb6');
     }

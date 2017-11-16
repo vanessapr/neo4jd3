@@ -109,11 +109,6 @@ const config = {
         'Account': 'user',
         'OwnBankAccount': 'bank',
         'OtherBankAccount': 'bank',
-        'Issues': 'exclamation-circle',
-        'Language': 'language',
-    },
-    images: {
-        'Language': 'img/twemoji/1f1f1-1f1f7.svg',
     },
     minCollision: 45,
     neo4jData: data,
