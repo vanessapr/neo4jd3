@@ -25,7 +25,11 @@ There are a couple files you want to pay attention to:
 
 * Add the source code, style sheets, src images to whatever your current asset pipeline.
 
-* When you have all dependencies configured ... (You can test library is there by writing `Neo4jd3` in console) create a configuation object. The one I used is at the end of `docs/js/data.js`.
-    * You will need to graph the data from an ajax call or have it created on the back end, and then to put that data into the config
+* When you have all dependencies configured  create a configuation object. The one I used is at the end of `docs/js/data.js`.
+
+    * Assign the data from the neo4j query to a variable. onfig
+
+    * Create a config object with the data and the settings in `docs/index.html`
+
 
 * Create a div with some id like #neo4jd3 although it could be anthing and supply the name of the div and config to `new Neo4jd3` as you see in `index.html` on line `30`
