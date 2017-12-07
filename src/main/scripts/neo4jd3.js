@@ -259,16 +259,39 @@ function Neo4jD3(_selector, _options) {
                            });
     }
 
-    function calculateStrokeWidth(){
+    function getAmounts (relationships){
+        var amounts = [];
 
-    };
+        for (var i = 0; i < relationships.length; i++){
+            var objectProperties = relationships[i].properties;
+            if (objectProperties.hasOwnProperty('Amount')){
+                var amount = objectProperties.Amount;
+                amounts.push(+amount);
+            }
+        }
 
-    function appendOutlineToRelationship(r, normalizedAmounts) {
+        return amounts;
+    }
+
+    function createOutlineScale(relationships){
+        var amounts = getAmounts(relationships);
+        var extents = d3.extent(amounts);
+
+        var min = extents[0];
+        var max = extents[1];
+
+        var newScale = d3.scaleLinear()
+            .domain([min,max])
+            .range([.1, 3]);
+        return newScale;
+    }
+
+    function appendOutlineToRelationship(r, outlineScale) {
         return r.append('path')
                 .attr('class', 'outline')
                 .attr('fill', '#a5abb6')
                 .attr('stroke-width', function(d,i){
-                    return .5 + 6 * normalizedAmounts[i];
+                    return outlineScale(+d.properties.Amount);
                 })
                 .attr('stroke', '#a5abb6');
     }
@@ -286,10 +309,10 @@ function Neo4jD3(_selector, _options) {
                 });
     }
 
-    function appendRelationshipToGraph(normalizedAmounts) {
+    function appendRelationshipToGraph(outlineScale) {
         var relationship = appendRelationship(),
             text = appendTextToRelationship(relationship),
-            outline = appendOutlineToRelationship(relationship, normalizedAmounts),
+            outline = appendOutlineToRelationship(relationship, outlineScale),
             overlay = appendOverlayToRelationship(relationship);
 
         return {
@@ -787,41 +810,6 @@ function Neo4jD3(_selector, _options) {
         });
     }
 
-
-    function getAmountsFromObjects(relationshipObjects){
-        var amounts = relationshipObjects.map(function(relationship, i){
-            return relationship.properties.Amount;
-        })
-
-        var noNulls = amounts.filter(function(x){
-            return x != null;
-        });
-
-        var mean = d3.mean(noNulls);
-
-        var amountsFinal = amounts.map(function(x){
-
-            var value = x == null? mean: x;
-            return +value;
-        })
-
-        return amountsFinal;
-    }
-
-    var amounts = getAmountsFromObjects(data.results[0].data[0].graph.relationships);
-
-    function normalize(amounts){
-
-        var min = d3.min(amounts);
-        var max = d3.max(amounts);
-
-        var ratios = amounts.map(function(x){
-            return (x - min) / (max - min);
-        })
-
-        return ratios;
-    }
-
     function toString(d) {
         var s = d.labels ? d.labels[0] : d.type;
 
@@ -900,13 +888,10 @@ function Neo4jD3(_selector, _options) {
         relationship = svgRelationships.selectAll('.relationship')
             .data(relationships, function(d) { return d.id; });
 
-        var amounts = getAmounts(relationships);
-        var normalizedAmounts = normalize(amounts);
-
-        var relationshipEnter = appendRelationshipToGraph(normalizedAmounts);
+        var outlineScale = createOutlineScale(relationships);
+        var relationshipEnter = appendRelationshipToGraph(outlineScale);
 
         relationship = relationshipEnter.relationship.merge(relationship);
-
         relationshipOutline = svg.selectAll('.relationship .outline');
         relationshipOutline = relationshipEnter.outline.merge(relationshipOutline);
 
@@ -915,16 +900,6 @@ function Neo4jD3(_selector, _options) {
 
         relationshipText = svg.selectAll('.relationship .text');
         relationshipText = relationshipEnter.text.merge(relationshipText);
-    }
-
-    // Fill in absent values with null
-    function getAmounts(relationships, mean){
-        return relationships.map(function(relationship, idx) {
-            if (relationship.properties.hasOwnProperty('Amount')){
-                return relationship.properties.Amount;
-            }
-            return null;
-        });
     }
 
     function version() {

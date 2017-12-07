@@ -5,6 +5,11 @@ function createProperties(x, attributes){
 
         if (typeof(value) !== 'undefined' && value !== ''){
             properties[attribute] = x[attribute];
+
+            if (attribute == 'Amount'){
+                properties[attribute] = +x[attribute];
+
+            }
         }
     })
 
