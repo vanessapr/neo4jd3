@@ -20,7 +20,7 @@ function Neo4jD3(_selector, _options) {
             neo4jData: undefined,
             neo4jDataUrl: undefined,
             nodeOutlineFillColor: undefined,
-            nodeRadius: 25,
+            nodeRadius: 75,
             relationshipColor: '#a5abb6',
             zoomFit: false
         },
@@ -175,11 +175,27 @@ function Neo4jD3(_selector, _options) {
                            options.onNodeMouseLeave(d);
                        }
                    })
-                   .call(d3.drag()
-                           .on('start', dragStarted)
-                           .on('drag', dragged)
-                           .on('end', dragEnded));
+
+                   //.call(d3.drag()
+                           //.on('start', dragStarted)
+                           //.on('drag', dragged)
+                           //.on('end', dragEnded));
     }
+
+    function truncateText(name){
+        return name;
+    }
+
+    function appendNodeNameText(node){
+        node.append('text')
+            .text(function(node) {
+                return node.properties.name;
+            })
+            .attr('font-size', 10)
+            .attr('x', -35)
+            .attr('y', 30);
+    }
+
 
     function appendNodeToGraph() {
         var n = appendNode();
@@ -194,6 +210,8 @@ function Neo4jD3(_selector, _options) {
         if (options.images) {
             appendImageToNode(n);
         }
+
+        var text = appendNodeNameText(n);
 
         return n;
     }
@@ -554,9 +572,9 @@ function Neo4jD3(_selector, _options) {
 
     function initSimulation() {
         var simulation = d3.forceSimulation()
-//                           .velocityDecay(0.8)
-//                           .force('x', d3.force().strength(0.002))
-//                           .force('y', d3.force().strength(0.002))
+                           //.force('x', d3.forceCollide().strength(0.002))
+                           //.force('y', d3.forceCollide().strength(0.002))
+                           //.force('y', d3.force().strength(0.002))
                            .force('collide', d3.forceCollide().radius(function(d) {
                                return options.minCollision;
                            }).iterations(10))
