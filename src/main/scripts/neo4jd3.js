@@ -183,17 +183,39 @@ function Neo4jD3(_selector, _options) {
     }
 
     function truncateText(name){
+        var nameLimit = 25;
+        if (name.length > nameLimit){
+            var firstPart = name.slice(0,12);
+            var middle = "..."
+            var lastPart = name.slice(-10);
+
+            return firstPart + middle + lastPart;
+        }
+
         return name;
+    }
+
+    function calculateXLocation(name){
+
+        return name.length ;
+
     }
 
     function appendNodeNameText(node){
         node.append('text')
             .text(function(node) {
-                return node.properties.name;
+                return truncateText(node.properties.name);
             })
             .attr('font-size', 10)
-            .attr('x', -35)
-            .attr('y', 30);
+            .attr('x', function(node){
+                return 0;
+                return calculateXLocation(node.properties.name);
+
+            })
+            .attr('y', 30)
+            .attr('text-anchor', 'middle')
+            .attr('alignment-baseline', 'central')
+
     }
 
 
@@ -571,12 +593,13 @@ function Neo4jD3(_selector, _options) {
     }
 
     function initSimulation() {
+        var spreadFactor = 1.25;
         var simulation = d3.forceSimulation()
                            //.force('x', d3.forceCollide().strength(0.002))
                            //.force('y', d3.forceCollide().strength(0.002))
                            //.force('y', d3.force().strength(0.002))
                            .force('collide', d3.forceCollide().radius(function(d) {
-                               return options.minCollision;
+                               return options.minCollision * spreadFactor;
                            }).iterations(10))
                            .force('charge', d3.forceManyBody())
                            .force('link', d3.forceLink().id(function(d) {
