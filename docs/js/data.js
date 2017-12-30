@@ -1,28 +1,37 @@
-function getRandomCompany(){
-    var companies = ['AAPL', 'GOOG', 'FB', 'MSFT', 'LINK', 'UBER', 'LYFT']
-    return companies[Math.floor(Math.random() * companies.length)];
-}
-
-function createRandomCompanyObject(){
-    return {
-        'name': getRandomCompany(),
-        'location': 'USA',
-        'type': 'Company'
+class Utility {
+    static copy(obj){
+        return JSON.parse(JSON.stringify(obj));
     }
 }
 
-function addCompanyToObject(data){
-    var nodes = data.nodes;
+class FakeData {
 
-    for (var i = 0; i < nodes.length; i++){
-        var item = nodes[i];
-        item['Company'] = createRandomCompanyObject();
+    static getRandomCompany(){
+        var companies = ['AAPL', 'GOOG', 'FB', 'MSFT', 'LINK', 'UBER', 'LYFT']
+        return companies[Math.floor(Math.random() * companies.length)];
     }
 
-    return data;
+    static createRandomCompanyObject(){
+        return {
+            'name': this.getRandomCompany(),
+            'location': 'USA',
+            'type': 'Company'
+        }
+    }
+
+    static addCompanyToObject(data){
+        var nodes = data.nodes;
+
+        for (var i = 0; i < nodes.length; i++){
+            var item = nodes[i];
+            item['Company'] = this.createRandomCompanyObject();
+        }
+
+        return data;
+    }
 }
 
-function createCompanyNodes(data){
+function createCompanyNodesDict(data){
     var companies = {};
     var index = 0;
     var nodes = data.results[0].data[0].graph.nodes;
@@ -51,6 +60,7 @@ function createCompanyNodes(data){
 
     return companies;
 }
+
 
 function getMaxID(nodes){
     var maxID = 0;
@@ -84,8 +94,15 @@ function hasCompany(node){
     return node.properties.Company == null;
 }
 
-function copy(obj){
-    return JSON.parse(JSON.stringify(obj));
+
+
+
+function appendCompanyInformationToData(data){
+    var companyNodes = createCompanyNodesDict(data)
+    var redirectEdges = redirectCompanyEdges(companyNodes, data);
+    var mergedRedirectData = mergeRedirectData(data, companyNodes, redirectEdges);
+
+    return mergedRedirectData;
 }
 
 
@@ -93,7 +110,7 @@ function redirectCompanyEdges(companyNodes, data){
 
     // assuming company nodes id is greater than anything in data
     // perhaps an invalid assumption
-    
+
     var maxID = getMaxID(companyNodes) + 1;
 
     var nodes = data.results[0].data[0].graph.nodes;
@@ -115,7 +132,7 @@ function redirectCompanyEdges(companyNodes, data){
 
         var companyName = companyObject.name;
         var companyNodeObject = companyNodes[companyName];
-        var edgeCopy = copy(edge);
+        var edgeCopy = Utility.copy(edge);
 
         edgeCopy.endNode = companyNodeObject.id;
 
@@ -126,7 +143,7 @@ function redirectCompanyEdges(companyNodes, data){
         if (!(edge.endNode in companyToNodeIdDict[companyName])){
 
             companyToNodeIdDict[companyName][edge.endNode] = true;
-            var edgeCopyTwo = copy(edge);
+            var edgeCopyTwo = Utility.copy(edge);
             edgeCopyTwo.startNode = companyNodeObject.id;
             delete edgeCopyTwo.id
             returnEdges.push(edgeCopyTwo);
@@ -147,7 +164,7 @@ function redirectCompanyEdges(companyNodes, data){
 
 function mergeRedirectData(data, companyNodes, companyEdges){
 
-    var dataCopy = copy(data);
+    var dataCopy = Utility.copy(data);
     var nodes = dataCopy.results[0].data[0].graph.nodes;
     var edges = dataCopy.results[0].data[0].graph.relationships;
     var actualCompanyNodes = companyDictToNodes(companyNodes);
@@ -159,10 +176,6 @@ function mergeRedirectData(data, companyNodes, companyEdges){
 
     return dataCopy;
 }
-
-
-
-
 
 function createCompanyEdges(companyNodes, data){
 
@@ -259,7 +272,7 @@ function mergeData(data, companyNodes, companyEdges){
 
 function createProperties(x, attributes){
     const properties = {};
-    properties['Company'] = createRandomCompanyObject();
+    properties['Company'] = FakeData.createRandomCompanyObject();
     attributes.forEach(function(attribute){
         const value = x[attribute];
 
@@ -362,19 +375,13 @@ var dummyData = {
     "errors": []
 }
 
-const _data_prime = addCompanyToObject(_data);
+const _data_prime = FakeData.addCompanyToObject(_data);
 var data = convertToNeo4j(_data_prime);
-const companyNodes = createCompanyNodes(data)
-var redirectEdges = redirectCompanyEdges(companyNodes, data);
-var mergedRedirectData = mergeRedirectData(data, companyNodes, redirectEdges);
 
-data = mergedRedirectData;
+var data = appendCompanyInformationToData(data);
 
 //const companyEdges = createCompanyEdges(companyNodes, data);
 //data = mergeData(data, companyNodes, companyEdges);
-
-
-
 
 const config = {
     highlight: [{
@@ -385,8 +392,8 @@ const config = {
     icons: {
         'Account': 'user',
         'OwnBankAccount': 'bank',
-        'OtherBankAccount': 'bank',
-        'Company': 'bank'
+        'OtherBankAccount': 'bank'
+        //'Company': 'user'
     },
     minCollision: 45,
     neo4jData: data,
