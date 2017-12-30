@@ -52,6 +52,117 @@ function createCompanyNodes(data){
     return companies;
 }
 
+function getMaxID(nodes){
+    var maxID = 0;
+    for (var i = 0; i < nodes.length; i++){
+        maxID = Math.max(maxID, nodes[i].id);
+    }
+    return maxID;
+}
+
+function createCompanyToStructureDict(nodes, f){
+    var dict = {};
+    for (var key in nodes){
+        if (!nodes.hasOwnProperty(key)){
+            continue;
+        }
+
+        dict[key] = f();
+    }
+    return dict;
+}
+
+function createCompanyToDictDict(nodes){
+    return createCompanyToStructureDict(nodes, function() {return {}});
+}
+
+function createCompanyToArrayDict(nodes){
+    return createCompanyToStructureDict(nodes, function() {return []});
+}
+
+function hasCompany(node){
+    return node.properties.Company == null;
+}
+
+function copy(obj){
+    return JSON.parse(JSON.stringify(obj));
+}
+
+
+function redirectCompanyEdges(companyNodes, data){
+
+    // assuming company nodes id is greater than anything in data
+    // perhaps an invalid assumption
+    
+    var maxID = getMaxID(companyNodes) + 1;
+
+    var nodes = data.results[0].data[0].graph.nodes;
+    var edges = data.results[0].data[0].graph.relationships;
+
+    var companyToCreateEdges = createCompanyToArrayDict(companyNodes);
+    var companyToNodeIdDict = createCompanyToDictDict(companyNodes);
+
+    var returnEdges = [];
+
+    for (var i = 0; i < edges.length; i++){
+        var edge = edges[i];
+        var companyObject = edge.properties.Company;
+
+        if (companyObject == null){
+            returnEdges.push(edge);
+            continue;
+        }
+
+        var companyName = companyObject.name;
+        var companyNodeObject = companyNodes[companyName];
+        var edgeCopy = copy(edge);
+
+        edgeCopy.endNode = companyNodeObject.id;
+
+        delete edgeCopy.id
+
+        returnEdges.push(edgeCopy);
+
+        if (!(edge.endNode in companyToNodeIdDict[companyName])){
+
+            companyToNodeIdDict[companyName][edge.endNode] = true;
+            var edgeCopyTwo = copy(edge);
+            edgeCopyTwo.startNode = companyNodeObject.id;
+            delete edgeCopyTwo.id
+            returnEdges.push(edgeCopyTwo);
+
+        }
+    }
+
+    for(var i = 0; i < returnEdges.length; i++){
+        var edge = returnEdges[i];
+        if (!('id' in edge)){
+            edge.id = maxID++;
+
+        }
+    }
+
+    return returnEdges;
+}
+
+function mergeRedirectData(data, companyNodes, companyEdges){
+
+    var dataCopy = copy(data);
+    var nodes = dataCopy.results[0].data[0].graph.nodes;
+    var edges = dataCopy.results[0].data[0].graph.relationships;
+    var actualCompanyNodes = companyDictToNodes(companyNodes);
+
+    dataCopy
+
+    dataCopy.results[0].data[0].graph.nodes = nodes.concat(actualCompanyNodes);
+    dataCopy.results[0].data[0].graph.relationships = companyEdges;
+
+    return dataCopy;
+}
+
+
+
+
 
 function createCompanyEdges(companyNodes, data){
 
@@ -90,6 +201,22 @@ function createCompanyEdges(companyNodes, data){
 
     return newEdges;
 }
+
+function companyDictToNodes(companyNodes){
+    var companyNodesAlone = Object.values(companyNodes);
+    var companyNodesPrime = companyNodesAlone.map(
+        function(x){
+            return {
+                id: x.id,
+                labels: ["Company"],
+                properties: {location: x.location, name: x.name},
+            }
+        });
+
+    return companyNodesPrime;
+}
+
+
 
 function mergeData(data, companyNodes, companyEdges){
 
@@ -235,15 +362,16 @@ var dummyData = {
     "errors": []
 }
 
-
-
-
 const _data_prime = addCompanyToObject(_data);
 var data = convertToNeo4j(_data_prime);
 const companyNodes = createCompanyNodes(data)
-const companyEdges = createCompanyEdges(companyNodes, data);
-data = mergeData(data, companyNodes, companyEdges);
-debugger;
+var redirectEdges = redirectCompanyEdges(companyNodes, data);
+var mergedRedirectData = mergeRedirectData(data, companyNodes, redirectEdges);
+
+data = mergedRedirectData;
+
+//const companyEdges = createCompanyEdges(companyNodes, data);
+//data = mergeData(data, companyNodes, companyEdges);
 
 
 
@@ -258,6 +386,7 @@ const config = {
         'Account': 'user',
         'OwnBankAccount': 'bank',
         'OtherBankAccount': 'bank',
+        'Company': 'bank'
     },
     minCollision: 45,
     neo4jData: data,
