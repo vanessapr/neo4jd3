@@ -943,6 +943,7 @@ function Neo4jD3(_selector, _options) {
         relationshipText = relationshipEnter.text.merge(relationshipText);
     }
 
+
     function version() {
         return VERSION;
     }

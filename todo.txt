@@ -1,3 +1,7 @@
-* Get all data like name and amount to show
-* Update icons with bank
-* Edge width corresponds to transaction size
+-* Get all data like name and amount to show
+-* Update icons with bank
+-* Edge width corresponds to transaction size
+
+* Put name and country information in a nice box
+* Put down notable information if there is some to see
+* Maybe visualize rule violations differently.

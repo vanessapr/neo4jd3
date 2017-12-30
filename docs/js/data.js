@@ -29,6 +29,25 @@ class FakeData {
 
         return data;
     }
+
+    static createProperties(x, attributes){
+        const properties = {};
+        properties['Company'] = this.createRandomCompanyObject();
+        attributes.forEach(function(attribute){
+            const value = x[attribute];
+
+            if (typeof(value) !== 'undefined' && value !== ''){
+                properties[attribute] = x[attribute];
+
+                if (attribute == 'Amount'){
+                    properties[attribute] = +x[attribute];
+
+                }
+            }
+        })
+
+        return properties;
+    }
 }
 
 function createCompanyNodesDict(data){
@@ -93,9 +112,6 @@ function createCompanyToArrayDict(nodes){
 function hasCompany(node){
     return node.properties.Company == null;
 }
-
-
-
 
 function appendCompanyInformationToData(data){
     var companyNodes = createCompanyNodesDict(data)
@@ -177,44 +193,6 @@ function mergeRedirectData(data, companyNodes, companyEdges){
     return dataCopy;
 }
 
-function createCompanyEdges(companyNodes, data){
-
-    var nodes = data.results[0].data[0].graph.nodes;
-    var edges = data.results[0].data[0].graph.relationships;
-    var maxID = -Infinity;
-    var maxIDEdge = -Infinity;
-
-    var newEdges = [];
-
-    for(var i= 0; i < edges.length; i++){
-        var edge = edges[i];
-        maxIDEdge = Math.max(maxIDEdge, edge.id);
-    }
-
-
-    for (var i = 0; i < nodes.length; i++){
-
-        var node = nodes[i];
-        var company = node.properties.Company.name;
-        var companyObject =  companyNodes[company];
-        var username = node.properties.name;
-        maxID = Math.max(maxID, node.id);
-
-        newObj = {
-            startNode: node.id,
-            endNode: companyObject.id,
-            company: company,
-            person: username
-        }
-        newEdges.push(newObj);
-    }
-    newEdges.forEach(function(x,i){
-        x.id = i + 1 + maxIDEdge;
-    })
-
-    return newEdges;
-}
-
 function companyDictToNodes(companyNodes){
     var companyNodesAlone = Object.values(companyNodes);
     var companyNodesPrime = companyNodesAlone.map(
@@ -229,84 +207,25 @@ function companyDictToNodes(companyNodes){
     return companyNodesPrime;
 }
 
-
-
-function mergeData(data, companyNodes, companyEdges){
-
-    var nodes = data.results[0].data[0].graph.nodes;
-
-    var companyNodesAlone = Object.values(companyNodes);
-    var companyNodesPrime = companyNodesAlone.map(
-        function(x){
-            return {
-                id: x.id,
-                labels: ["Company"],
-                properties: {location: x.location, name: x.name},
-            }
-        });
-
-    var edges = data.results[0].data[0].graph.relationships;
-
-    var companyEdgesPrime = companyEdges.map(function(x){
-
-        return {
-            id: x.id,
-            properties: {company: x.company, person: x.person},
-            type: "Company",
-            startNode: x.endNode,//x.startNode,
-            endNode: x.startNode//x.endNode
-        }
-
-    });
-
-    var nodesPrime = companyNodesPrime.concat(nodes)//.concat(companyNodesPrime);
-    var edgesPrime = companyEdgesPrime.concat(edges)//.concat(companyEdgesPrime);
-
-    data.results[0].data[0].graph.nodes = nodesPrime;
-    data.results[0].data[0].graph.relationships = edgesPrime;
-
-    return data;
-}
-
-
-
-function createProperties(x, attributes){
-    const properties = {};
-    properties['Company'] = FakeData.createRandomCompanyObject();
-    attributes.forEach(function(attribute){
-        const value = x[attribute];
-
-        if (typeof(value) !== 'undefined' && value !== ''){
-            properties[attribute] = x[attribute];
-
-            if (attribute == 'Amount'){
-                properties[attribute] = +x[attribute];
-
-            }
-        }
-    })
-
-    return properties;
-}
-
 function createNodes(obj){
     const attributes = ['name', 'label', 'Country', 'Branch', 'CreationDate', 'CusOrAccType', 'Company']
     return obj.nodes.map(function(x, idx){
         return {
             id: x.id,
             labels: [x.type],
-            properties: createProperties(x, attributes)
+            properties: FakeData.createProperties(x, attributes)
         }
     })
 }
 
 function createRelationships(obj){
-    const attributes = ["Amount", "Geolocation", "TransNo", "Comment", "TransactionDate", "RuleViolated", "RuleCode"]
+    //const attributes = ["Amount", "Geolocation", "TransNo", "Comment", "TransactionDate", "RuleViolated", "RuleCode"]
+    const attributes = ["Amount", "Geolocation", "TransactionDate", "RuleCode"]
     return obj.edges.map(function(x, idx){
         return {
             id: idx,
             type: x.type,
-            properties: createProperties(x, attributes),
+            properties: FakeData.createProperties(x, attributes),
             startNode: x.source,
             endNode: x.target,
         }
@@ -330,58 +249,12 @@ function convertToNeo4j(obj){
 
 }
 
-var dummyData = {
-    "results": [
-        {
-            "columns": ["user", "entity"],
-            "data": [
-                {
-                    "graph": {
-                        "nodes": [
-                            {
-                                "id": "1",
-                                "labels": ["User"],
-                                "properties": {
-                                    "userId": "eisman"
-                                }
-                            },
-                            {
-                                "id": "8",
-                                "labels": ["Project"],
-                                "properties": {
-                                    "name": "neo4jd3",
-                                    "title": "neo4jd3.js",
-                                    "description": "Neo4j graph visualization using D3.js.",
-                                    "url": "https://eisman.github.io/neo4jd3"
-                                }
-                            }
-                        ],
-                        "relationships": [
-                            {
-                                "id": "7",
-                                "type": "DEVELOPES",
-                                "startNode": "1",
-                                "endNode": "8",
-                                "properties": {
-                                    "from": 1470002400000
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
-    ],
-    "errors": []
-}
+var _data_prime = FakeData.addCompanyToObject(_data);
 
-const _data_prime = FakeData.addCompanyToObject(_data);
 var data = convertToNeo4j(_data_prime);
+_data_prime = null;
 
 var data = appendCompanyInformationToData(data);
-
-//const companyEdges = createCompanyEdges(companyNodes, data);
-//data = mergeData(data, companyNodes, companyEdges);
 
 const config = {
     highlight: [{
@@ -395,8 +268,7 @@ const config = {
         'OtherBankAccount': 'bank'
         //'Company': 'user'
     },
-    minCollision: 45,
+    minCollision: 35,
     neo4jData: data,
     nodeRadius: 20,
 };
-
