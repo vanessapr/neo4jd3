@@ -265,8 +265,8 @@ const config = {
     icons: {
         'Account': 'user',
         'OwnBankAccount': 'bank',
-        'OtherBankAccount': 'bank'
-        //'Company': 'user'
+        'OtherBankAccount': 'bank',
+        'Company': 'building'
     },
     minCollision: 35,
     neo4jData: data,

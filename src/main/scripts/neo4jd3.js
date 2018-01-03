@@ -183,11 +183,17 @@ function Neo4jD3(_selector, _options) {
     }
 
     function truncateText(name){
-        var nameLimit = 25;
+        var nameLimit = 15;
+        name
         if (name.length > nameLimit){
-            var firstPart = name.slice(0,12);
+            var splat = name.split(" ");
+
+            if (splat.length > 2){
+                name = splat[0] + splat[1];
+            }
+            var firstPart = name.slice(0,6);
             var middle = "..."
-            var lastPart = name.slice(-10);
+            var lastPart = name.slice(-3);
 
             return firstPart + middle + lastPart;
         }
@@ -196,14 +202,40 @@ function Neo4jD3(_selector, _options) {
     }
 
     function calculateXLocation(name){
-
-        return name.length ;
+        return name.length;
 
     }
 
     function appendNodeNameText(node){
-        node.append('text')
+        // going to need to link this to node width/ hieght at some point
+        var g = node.append('g')
+
+        g.append("rect")
+            .attr("width", '80px')
+            .attr("height", '20px')
+            .style("fill", function(d){
+                //debugger;
+                var labels = node.labels;
+                if (labels && labels.length && labels.indexOf('Company') != -1){
+                    debugger
+                    return 'black'
+
+                }
+                 
+
+
+                return "#bdc3c7";
+            
+            })
+            .attr('y', 24)
+            .attr('x', -40)
+            .attr('rx', 10)
+            .attr('ry', 10)
+
+        g.append('text')
             .text(function(node) {
+                //ddebugger
+                var x = node.labels;
                 return truncateText(node.properties.name);
             })
             .attr('font-size', 10)
@@ -212,10 +244,25 @@ function Neo4jD3(_selector, _options) {
                 return calculateXLocation(node.properties.name);
 
             })
-            .attr('y', 30)
+            .attr('y', 29)
             .attr('text-anchor', 'middle')
-            .attr('alignment-baseline', 'central')
+            .attr('alignment-baseline', 'central');
 
+        g.append('text')
+            .text(function(node) {
+                return 'USA'
+                //var foo = node.location || node.properties.Company.location; 
+                return truncateText(foo);
+            })
+            .attr('font-size', 10)
+            .attr('x', function(node){
+                return 0;
+                return calculateXLocation(node.properties.name);
+
+            })
+            .attr('y', 38)
+            .attr('text-anchor', 'middle')
+            .attr('alignment-baseline', 'central');
     }
 
 
