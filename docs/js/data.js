@@ -32,7 +32,7 @@ class FakeData {
 
     static createProperties(x, attributes){
         const properties = {};
-        properties['Company'] = this.createRandomCompanyObject();
+        //properties['Company'] = this.createRandomCompanyObject();
         attributes.forEach(function(attribute){
             const value = x[attribute];
 
@@ -249,12 +249,13 @@ function convertToNeo4j(obj){
 
 }
 
-var _data_prime = FakeData.addCompanyToObject(_data);
+//var _data_prime = FakeData.addCompanyToObject(_data);
 
-var data = convertToNeo4j(_data_prime);
-_data_prime = null;
+var data = convertToNeo4j(_data);
+//debugger;
+//_data_prime = null;
 
-var data = appendCompanyInformationToData(data);
+//var data = appendCompanyInformationToData(data);
 
 const config = {
     highlight: [{
