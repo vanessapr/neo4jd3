@@ -251,7 +251,7 @@ function convertToNeo4j(obj){
 
 //var _data_prime = FakeData.addCompanyToObject(_data);
 
-var data = convertToNeo4j(_data);
+var data = convertToNeo4j(other_data);
 //debugger;
 //_data_prime = null;
 

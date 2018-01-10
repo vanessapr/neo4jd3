@@ -609,3 +609,397 @@ const _data = {
     "RuleCode": ""
   }]
 }
+const other_data = {
+  "nodes": [
+    {
+      "id": 0,
+      "name": "Green Zone ",
+      "label": "Green Zone",
+      "type": "Customer",
+      "Country": "USA",
+      "Branch": "Head Office",
+      "CreationDate": "2017-10-10",
+      "CusOrAccType": "CUSTOMER"
+    },
+    {
+      "id": 1,
+      "name": "Jackie Lawrence",
+      "label": "621062",
+      "type": "Account",
+      "Branch": "Head Office",
+      "CreationDate": "2017-10-10",
+      "CusOrAccType": "Current"
+    },
+    {
+      "id": 2,
+      "name": "devid  Watson",
+      "label": "09294687",
+      "type": "OtherBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 3,
+      "name": "Max Aitken",
+      "label": "13150046",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 4,
+      "name": "Jack Lawson",
+      "label": "13993868",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 5,
+      "name": "Hastings Lees-Smith",
+      "label": "14352860",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 6,
+      "name": "Julian Amery",
+      "label": "16398019",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 7,
+      "name": "Mark Lazarowicz",
+      "label": "17381660",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 8,
+      "name": "Jennie Lee",
+      "label": "19165510",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 9,
+      "name": "David Laws",
+      "label": "2262305",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 10,
+      "name": "David Laws",
+      "label": "226230500",
+      "type": "OtherBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 11,
+      "name": "Leo Amery",
+      "label": "3213961",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 12,
+      "name": "Peter Archer",
+      "label": "3508616",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 13,
+      "name": "Graham Allen",
+      "label": "3612737",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 14,
+      "name": "Diane Abbott",
+      "label": "3635541",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 15,
+      "name": "David Alton",
+      "label": "3654006",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 16,
+      "name": "William Murdoch Adamson ",
+      "label": "4980227",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    },
+    {
+      "id": 17,
+      "name": "Jon Ven Den",
+      "label": "8983996",
+      "type": "OwnBankAccount",
+      "Bank": "ABC Bank",
+      "Branch": "010"
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 1,
+      "name": "0-1",
+      "type": "Account"
+    },
+    {
+      "source": 1,
+      "target": 1,
+      "name": "1-1",
+      "type": "DR",
+      "Amount": "500.00",
+      "Geolocation": "USA",
+      "TransNo": "000000009",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-06-03",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 2,
+      "target": 1,
+      "name": "2-1",
+      "type": "CR",
+      "Amount": "9900.00",
+      "Geolocation": "USA",
+      "TransNo": "000000006",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-05-13",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 1,
+      "target": 2,
+      "name": "1-2",
+      "type": "DR",
+      "Amount": "9900.00",
+      "Geolocation": "USA",
+      "TransNo": "00000000611",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-05-13",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 1,
+      "target": 3,
+      "name": "1-3",
+      "type": "DR",
+      "Amount": "900.00",
+      "Geolocation": "USA",
+      "TransNo": "000000033",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-06-16",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 4,
+      "target": 1,
+      "name": "4-1",
+      "type": "CR",
+      "Amount": "9900.00",
+      "Geolocation": "USA",
+      "TransNo": "000000014",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-05-18",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 1,
+      "target": 5,
+      "name": "1-5",
+      "type": "DR",
+      "Amount": "1200.00",
+      "Geolocation": "USA",
+      "TransNo": "000000021",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-04-11",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 6,
+      "target": 1,
+      "name": "6-1",
+      "type": "CR",
+      "Amount": "99000.00",
+      "Geolocation": "USA",
+      "TransNo": "000000040",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-03-06",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 1,
+      "target": 7,
+      "name": "1-7",
+      "type": "DR",
+      "Amount": "2000.00",
+      "Geolocation": "USA",
+      "TransNo": "000000018",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-03-02",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 8,
+      "target": 1,
+      "name": "8-1",
+      "type": "CR",
+      "Amount": "99000.00",
+      "Geolocation": "USA",
+      "TransNo": "000000019",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-05-18",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 1,
+      "target": 9,
+      "name": "1-9",
+      "type": "DR",
+      "Amount": "1600.00",
+      "Geolocation": "USA",
+      "TransNo": "000000010",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-05-19",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 10,
+      "target": 1,
+      "name": "10-1",
+      "type": "CR",
+      "Amount": "9900.00",
+      "Geolocation": "USA",
+      "TransNo": "000000013",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-04-20",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 11,
+      "target": 1,
+      "name": "11-1",
+      "type": "CR",
+      "Amount": "99000.00",
+      "Geolocation": "USA",
+      "TransNo": "000000041",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-06-14",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 1,
+      "target": 12,
+      "name": "1-12",
+      "type": "DR",
+      "Amount": "1500.00",
+      "Geolocation": "USA",
+      "TransNo": "000000048",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-03-31",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 13,
+      "target": 1,
+      "name": "13-1",
+      "type": "CR",
+      "Amount": "99000.00",
+      "Geolocation": "USA",
+      "TransNo": "000000037",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-05-03",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 14,
+      "target": 1,
+      "name": "14-1",
+      "type": "CR",
+      "Amount": "9900.00",
+      "Geolocation": "USA",
+      "TransNo": "000000022",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-05-08",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 15,
+      "target": 1,
+      "name": "15-1",
+      "type": "CR",
+      "Amount": "96800.00",
+      "Geolocation": "USA",
+      "TransNo": "000000039",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-06-19",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 1,
+      "target": 16,
+      "name": "1-16",
+      "type": "DR",
+      "Amount": "600.00",
+      "Geolocation": "USA",
+      "TransNo": "000000028",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-04-02",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    },
+    {
+      "source": 1,
+      "target": 17,
+      "name": "1-17",
+      "type": "DR",
+      "Amount": "1500.00",
+      "Geolocation": "USA",
+      "TransNo": "000000011",
+      "Comment": "Business Purpose",
+      "TransactionDate": "2017-05-04",
+      "RuleViolated": "No",
+      "RuleCode": ""
+    }
+  ]
+}
+

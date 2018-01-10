@@ -84,20 +84,44 @@ function Neo4jD3(_selector, _options) {
 
   function appendInfoElement(cls, isNode, property, value) {
     var elem = info.append('a');
+    var labelColorMapping = {
+      "customer": "#68bdf6",
+      "account": "#ffd86e",
+      "ownbankaccount": "#6dce9e",
+      "otherbankaccount": "#ff867f",
+      "ruleviolation": "#ffa82d"
+    }
 
     elem.attr('href', '#')
       .attr('class', cls)
       .html('<strong>' + property + '</strong>' + (value ? (': ' + value) : ''));
-
     if (!value) {
       elem.style('background-color', function(d) {
+
+          var the_property = property.toLowerCase();
+
+          if (the_property in labelColorMapping){
+            return labelColorMapping[the_property];
+          }
+
+
         return options.nodeOutlineFillColor ? options.nodeOutlineFillColor : (isNode ? class2color(property) : defaultColor());
+
+
       })
         .style('border-color', function(d) {
+          var the_property = property.toLowerCase();
+
+          if (the_property in labelColorMapping){
+            return labelColorMapping[the_property];
+          }
           return options.nodeOutlineFillColor ? class2darkenColor(options.nodeOutlineFillColor) : (isNode ? class2darkenColor(property) : defaultDarkenColor());
+
+
         })
         .style('color', function(d) {
           return options.nodeOutlineFillColor ? class2darkenColor(options.nodeOutlineFillColor) : '#fff';
+
         });
     }
   }
@@ -176,10 +200,10 @@ function Neo4jD3(_selector, _options) {
         }
       })
 
-    //.call(d3.drag()
-    //.on('start', dragStarted)
-    //.on('drag', dragged)
-    //.on('end', dragEnded));
+    .call(d3.drag()
+    .on('start', dragStarted)
+    .on('drag', dragged)
+    .on('end', dragEnded));
   }
   function truncateText(str, length) {
 
@@ -220,7 +244,6 @@ function Neo4jD3(_selector, _options) {
 
     g.append('text')
       .text(function(node) {
-        //ddebugger
         var x = node.labels;
         return truncateText(node.properties.name, 13);
       })
@@ -256,13 +279,43 @@ function Neo4jD3(_selector, _options) {
   }
 
   function appendOutlineToNode(node) {
+
+    var labelColorMapping = {
+      "customer": "#68bdf6",
+      "account": "#ffd86e",
+      "ownbankaccount": "#6dce9e",
+      "otherbankaccount": "#ff867f",
+      "ruleviolation": "#ffa82d"
+    }
+
     return node.append('circle')
       .attr('class', 'outline')
       .attr('r', options.nodeRadius)
       .style('fill', function(d) {
+        var label = d.labels;
+
+        if (label.length === 0){
+          return 'gray';
+        }
+
+        var the_label = label[0].toLowerCase();
+        if (the_label in labelColorMapping){
+          return labelColorMapping[the_label];
+        }
+
         return options.nodeOutlineFillColor ? options.nodeOutlineFillColor : class2color(d.labels[0]);
       })
       .style('stroke', function(d) {
+        var label = d.labels;
+
+        if (label.length === 0){
+          return 'gray';
+        }
+
+        var the_label = label[0].toLowerCase();
+        if (the_label in labelColorMapping){
+          return labelColorMapping[the_label];
+        }
         return options.nodeOutlineFillColor ? class2darkenColor(options.nodeOutlineFillColor) : class2darkenColor(d.labels[0]);
       })
       .append('title').text(function(d) {
@@ -820,13 +873,6 @@ function tickRelationshipsOutlines() {
         rotatedPointE2 = rotatePoint(center, { x: d.target.x - d.source.x - (options.nodeRadius + 1) * u.x + (- n.x - u.x) * options.arrowSize, y: d.target.y - d.source.y - (options.nodeRadius + 1) * u.y + (- n.y - u.y) * options.arrowSize }, angle),
         rotatedPointF2 = rotatePoint(center, { x: d.target.x - d.source.x - (options.nodeRadius + 1) * u.x - u.x * options.arrowSize, y: d.target.y - d.source.y - (options.nodeRadius + 1) * u.y - u.y * options.arrowSize }, angle),
         rotatedPointG2 = rotatePoint(center, { x: d.target.x - d.source.x - textMargin.x, y: d.target.y - d.source.y - textMargin.y }, angle);
-
-      var lineGenerator = d3.line();
-      var source = relationship.source;
-      var target = relationship.target
-      var data = [[source.x, source.y], [target.x, target.y]];
-
-      var pathString = lineGenerator(data);
 
       return 'M ' + rotatedPointA1.x + ' ' + rotatedPointA1.y +
         ' L ' + rotatedPointB1.x + ' ' + rotatedPointB1.y +
