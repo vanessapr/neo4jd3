@@ -768,7 +768,7 @@ const other_data = {
     },
     {
       "source": 1,
-      "target": 1,
+      "target": 2,
       "name": "1-1",
       "type": "DR",
       "Amount": "500.00",

@@ -240,8 +240,8 @@ function convertToNeo4j(obj){
         columns: ["user", "entity"],
         data: [{
             graph: {
-                nodes: nodes.slice(1),
-                relationships: relationships.slice(2)
+                nodes: nodes,
+                relationships: relationships
             }}]
     }]
 
@@ -267,7 +267,8 @@ const config = {
         'Account': 'user',
         'OwnBankAccount': 'bank',
         'OtherBankAccount': 'bank',
-        'Company': 'building'
+        'Company': 'building',
+        'Customer': 'user'
     },
     minCollision: 35,
     neo4jData: data,
