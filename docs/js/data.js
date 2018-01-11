@@ -32,7 +32,6 @@ class FakeData {
 
     static createProperties(x, attributes){
         const properties = {};
-        //properties['Company'] = this.createRandomCompanyObject();
         attributes.forEach(function(attribute){
             const value = x[attribute];
 
@@ -220,7 +219,7 @@ function createNodes(obj){
 
 function createRelationships(obj){
     //const attributes = ["Amount", "Geolocation", "TransNo", "Comment", "TransactionDate", "RuleViolated", "RuleCode"]
-    const attributes = ["Amount", "Geolocation", "TransactionDate", "RuleCode"]
+    const attributes = ["Amount", "Geolocation", "TransactionDate", "RuleCode", "RuleViolated"]
     return obj.edges.map(function(x, idx){
         return {
             id: idx,

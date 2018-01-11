@@ -26,6 +26,30 @@ function Neo4jD3(_selector, _options) {
     },
     VERSION = '0.0.1';
 
+  function ruleViolationDict(edges){
+    var d = {}
+    for(var i = 0; i< edges.length; i++){
+
+      var edge = edges[i];
+      var id = edge.startNode;
+
+      if (!(id in d)){
+        d[id] = false;
+      }
+
+      if ('properties' in edge){
+        var properties = edge.properties;
+        if ('RuleViolated' in properties){
+
+          if (properties.RuleViolated != 'No'){
+            d[id] = true;
+          }
+        }
+      }
+    }
+    return d;
+  }
+
   function appendGraph(container) {
     svg = container.append('svg')
       .attr('width', '100%')
@@ -59,6 +83,7 @@ function Neo4jD3(_selector, _options) {
   }
 
   function appendImageToNode(node) {
+
     return node.append('image')
       .attr('height', function(d) {
         return icon(d) ? '24px': '30px';
@@ -269,7 +294,10 @@ function Neo4jD3(_selector, _options) {
       appendTextToNode(n);
     }
 
+    appendRuleViolationToNode(n);
+
     if (options.images) {
+
       appendImageToNode(n);
     }
 
@@ -352,6 +380,47 @@ function Neo4jD3(_selector, _options) {
       });
   }
 
+  function appendRuleViolationToNode(node) {
+
+    var transitionDuration = 3000;
+
+    var node = node.filter(function(d){
+      return options.globalDict[d.id];
+    })
+
+    return node.append('text')
+      .attr('class', 'text icon')
+      .attr('fill', '#ffa500')
+      .attr('font-size', function(d) {
+        return (.9 * options.nodeRadius) + 'px';})
+      .attr('pointer-events', 'none')
+      .attr('text-anchor', 'middle')
+      .attr('y', function(d) {
+        return '-12px';
+      })
+      .attr('x', function(d) {
+        return '-12px';
+      })
+      .html(function(d) {
+        var _icon = options.iconMap['times'];
+        return _icon ? '&#x' + _icon : d.id;
+      })
+      .transition()
+      .duration(transitionDuration)
+      .on("start", function repeat() {
+        d3.active(this)
+          .style('opacity', .5)
+          .transition()
+          .duration(transitionDuration)
+          .style('opacity', 1)
+          .transition()
+          .on("start", repeat);
+      })
+
+
+
+  }
+
 
   function appendRelationship() {
     return relationship.enter()
@@ -404,7 +473,16 @@ function Neo4jD3(_selector, _options) {
         return 1;
         //return outlineScale(+d.properties.Amount);
       })
-      .attr('stroke', '#a5abb6');
+      .attr('stroke', function(d)
+        {
+          if (d.properties && 'RuleViolated' in d.properties){
+
+            if (d.properties.RuleViolated.toLowerCase() != 'no'){
+              return '#ffa500'
+            }
+          }
+          return '#a5abb6'
+        });
   }
 
   function appendOverlayToRelationship(r) {
@@ -413,7 +491,7 @@ function Neo4jD3(_selector, _options) {
   }
 
   function appendTextToRelationship(r) {
-    return r.append('text')
+        return r.append('text')
       .attr('class', 'text')
       .text(function(d) {
         return '';
@@ -421,10 +499,11 @@ function Neo4jD3(_selector, _options) {
   }
 
   function appendRelationshipToGraph(outlineScale) {
-    var relationship = appendRelationship(),
-      text = appendTextToRelationship(relationship),
-      outline = appendOutlineToRelationship(relationship, outlineScale),
-      overlay = appendOverlayToRelationship(relationship);
+    var relationship = appendRelationship();
+
+    var text = appendTextToRelationship(relationship);
+    var outline = appendOutlineToRelationship(relationship, outlineScale);
+    var overlay = appendOverlayToRelationship(relationship);
 
     return {
       outline: outline,
@@ -626,6 +705,7 @@ function init(_selector, _options) {
   appendGraph(container);
 
   simulation = initSimulation();
+
 
   if (options.neo4jData) {
     loadNeo4jData(options.neo4jData);
@@ -954,6 +1034,8 @@ function unitaryVector(source, target, newLength) {
 }
 
 function updateWithD3Data(d3Data) {
+  // marker
+  options.globalDict = ruleViolationDict(d3Data.relationships);
   updateNodesAndRelationships(d3Data.nodes, d3Data.relationships);
 }
 
