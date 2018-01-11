@@ -294,7 +294,7 @@ function Neo4jD3(_selector, _options) {
       appendTextToNode(n);
     }
 
-    appendRuleViolationToNode(n);
+    //appendRuleViolationToNode(n);
 
     if (options.images) {
 
@@ -385,27 +385,30 @@ function Neo4jD3(_selector, _options) {
     var transitionDuration = 3000;
 
     var node = node.filter(function(d){
-      return options.globalDict[d.id];
+
+      if ('RuleViolated' in d.properties){
+        var status = d.properties.RuleViolated.toLowerCase();
+
+        if (status != 'no'){
+          return true;
+        }
+      }
+      return false
     })
 
-    return node.append('text')
+    var foo = node.append('text')
       .attr('class', 'text icon')
       .attr('fill', '#ffa500')
       .attr('font-size', function(d) {
         return (.9 * options.nodeRadius) + 'px';})
       .attr('pointer-events', 'none')
       .attr('text-anchor', 'middle')
-      .attr('y', function(d) {
-        return '-12px';
-      })
-      .attr('x', function(d) {
-        return '-12px';
-      })
       .html(function(d) {
         var _icon = options.iconMap['times'];
         return _icon ? '&#x' + _icon : d.id;
       })
-      .transition()
+
+    foo.transition()
       .duration(transitionDuration)
       .on("start", function repeat() {
         d3.active(this)
@@ -416,11 +419,11 @@ function Neo4jD3(_selector, _options) {
           .transition()
           .on("start", repeat);
       })
+    return foo;
 
 
 
   }
-
 
   function appendRelationship() {
     return relationship.enter()
@@ -475,12 +478,6 @@ function Neo4jD3(_selector, _options) {
       })
       .attr('stroke', function(d)
         {
-          if (d.properties && 'RuleViolated' in d.properties){
-
-            if (d.properties.RuleViolated.toLowerCase() != 'no'){
-              return '#ffa500'
-            }
-          }
           return '#a5abb6'
         });
   }
@@ -491,17 +488,48 @@ function Neo4jD3(_selector, _options) {
   }
 
   function appendTextToRelationship(r) {
-        return r.append('text')
-      .attr('class', 'text')
-      .text(function(d) {
+      var text = r.append('text')
+      .attr('class', 'text icon')
+      .attr('fill', '#ffa500')
+      .attr('font-size', '15px')
+      .attr('x', '-5px')
+      .attr('y', '2px')
+      .html(function(d) {
+
+        if ('RuleViolated' in d.properties){
+          var status = d.properties.RuleViolated.toLowerCase();
+
+          if (status != 'no'){
+            var _icon = options.iconMap['times'];
+            return _icon ? '&#x' + _icon : d.id;
+          }
+        }
         return '';
       });
+
+    var transitionDuration = 2000;
+  var bar = text.transition()
+      .duration(transitionDuration)
+      .on("start", function repeat() {
+        d3.active(this)
+          .style('opacity', .5)
+          .transition()
+          .duration(transitionDuration)
+          .style('opacity', 1)
+          .transition()
+          .on("start", repeat);
+      })
+
+
+    return text;
   }
 
   function appendRelationshipToGraph(outlineScale) {
     var relationship = appendRelationship();
 
     var text = appendTextToRelationship(relationship);
+    appendRuleViolationToNode(relationship);
+
     var outline = appendOutlineToRelationship(relationship, outlineScale);
     var overlay = appendOverlayToRelationship(relationship);
 
@@ -934,10 +962,21 @@ function tickRelationshipsOutlines() {
     var bbox = text.node().getBBox();
     var padding = 0;
 
+
+    var textBoundingBox = text.node().getBBox()
+
+    if ('RuleViolated' in relationship.properties){
+      var status = relationship.properties.RuleViolated.toLowerCase();
+
+      if (status != 'no'){
+        textBoundingBox = {x: 0, y: 0, width: 17, height: 0}
+      }
+    }
+
+
     outline.attr('d', function(d) {
       var center = { x: 0, y: 0 },
         angle = rotation(d.source, d.target),
-        textBoundingBox = text.node().getBBox(),
         textPadding = 0,
         u = unitaryVector(d.source, d.target),
         textMargin = { x: (d.target.x - d.source.x - (textBoundingBox.width + textPadding) * u.x) * 0.5, y: (d.target.y - d.source.y - (textBoundingBox.width + textPadding) * u.y) * 0.5 },

@@ -94,7 +94,12 @@ body {
 }
 
 .relationship {
-    cursor: default;
+
+  .text {
+    font-family: FontAwesome;
+  }
+
+  cursor: default;
 
     line {
         stroke: #aaa;
