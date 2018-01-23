@@ -22,32 +22,21 @@ function Neo4jD3(_selector, _options) {
       nodeOutlineFillColor: undefined,
       nodeRadius: 75,
       relationshipColor: '#a5abb6',
-      zoomFit: false
+      zoomFit: false,
+      labelColorMapping: createLabelColorMapping()
     },
     VERSION = '0.0.1';
 
-  function ruleViolationDict(edges){
-    var d = {}
-    for(var i = 0; i< edges.length; i++){
+  function createLabelColorMapping(){
+    var labelColorMapping = {
+      "customer": "#68bdf6",
+      "account": "#ffd86e",
+      "ownbankaccount": "#6dce9e",
+      "otherbankaccount": "#ff867f",
+      "ruleviolation": "#ffa82d"
+    };
 
-      var edge = edges[i];
-      var id = edge.startNode;
-
-      if (!(id in d)){
-        d[id] = false;
-      }
-
-      if ('properties' in edge){
-        var properties = edge.properties;
-        if ('RuleViolated' in properties){
-
-          if (properties.RuleViolated != 'No'){
-            d[id] = true;
-          }
-        }
-      }
-    }
-    return d;
+    return labelColorMapping;
   }
 
   function appendGraph(container) {
@@ -109,13 +98,6 @@ function Neo4jD3(_selector, _options) {
 
   function appendInfoElement(cls, isNode, property, value) {
     var elem = info.append('a');
-    var labelColorMapping = {
-      "customer": "#68bdf6",
-      "account": "#ffd86e",
-      "ownbankaccount": "#6dce9e",
-      "otherbankaccount": "#ff867f",
-      "ruleviolation": "#ffa82d"
-    }
 
     elem.attr('href', '#')
       .attr('class', cls)
@@ -123,22 +105,21 @@ function Neo4jD3(_selector, _options) {
     if (!value) {
       elem.style('background-color', function(d) {
 
-          var the_property = property.toLowerCase();
+          var theProperty = property.toLowerCase();
 
-          if (the_property in labelColorMapping){
-            return labelColorMapping[the_property];
+          if (theProperty in options.labelColorMapping){
+            return options.labelColorMapping[theProperty];
           }
-
 
         return options.nodeOutlineFillColor ? options.nodeOutlineFillColor : (isNode ? class2color(property) : defaultColor());
 
 
       })
         .style('border-color', function(d) {
-          var the_property = property.toLowerCase();
+          var theProperty = property.toLowerCase();
 
-          if (the_property in labelColorMapping){
-            return labelColorMapping[the_property];
+          if (theProperty in options.labelColorMapping){
+            return options.labelColorMapping[theProperty];
           }
           return options.nodeOutlineFillColor ? class2darkenColor(options.nodeOutlineFillColor) : (isNode ? class2darkenColor(property) : defaultDarkenColor());
 
@@ -243,7 +224,7 @@ function Neo4jD3(_selector, _options) {
     } else {
       return str;
     }
-  };
+  }
 
   function calculateXLocation(name){
     return name.length;
@@ -252,7 +233,7 @@ function Neo4jD3(_selector, _options) {
 
   function appendNodeNameText(node){
     // going to need to link this to node width/ hieght at some point
-    var g = node.append('g')
+    var g = node.append('g');
 
     g.append("rect")
       .attr("width", '80px')
@@ -265,7 +246,7 @@ function Neo4jD3(_selector, _options) {
       .attr('y', 24)
       .attr('x', -40)
       .attr('rx', 10)
-      .attr('ry', 10)
+      .attr('ry', 10);
 
     g.append('text')
       .text(function(node) {
@@ -275,8 +256,7 @@ function Neo4jD3(_selector, _options) {
       .attr('font-size', 10)
       .attr('x', function(node){
         return 0;
-        return calculateXLocation(node.properties.name);
-
+        //return calculateXLocation(node.properties.name);
       })
       .attr('y', 33)
       .attr('text-anchor', 'middle')
@@ -294,7 +274,6 @@ function Neo4jD3(_selector, _options) {
       appendTextToNode(n);
     }
 
-    //appendRuleViolationToNode(n);
 
     if (options.images) {
 
@@ -308,13 +287,6 @@ function Neo4jD3(_selector, _options) {
 
   function appendOutlineToNode(node) {
 
-    var labelColorMapping = {
-      "customer": "#68bdf6",
-      "account": "#ffd86e",
-      "ownbankaccount": "#6dce9e",
-      "otherbankaccount": "#ff867f",
-      "ruleviolation": "#ffa82d"
-    }
 
     return node.append('circle')
       .attr('class', 'outline')
@@ -327,8 +299,8 @@ function Neo4jD3(_selector, _options) {
         }
 
         var the_label = label[0].toLowerCase();
-        if (the_label in labelColorMapping){
-          return labelColorMapping[the_label];
+        if (the_label in options.labelColorMapping){
+          return options.labelColorMapping[the_label];
         }
 
         return options.nodeOutlineFillColor ? options.nodeOutlineFillColor : class2color(d.labels[0]);
@@ -341,8 +313,8 @@ function Neo4jD3(_selector, _options) {
         }
 
         var the_label = label[0].toLowerCase();
-        if (the_label in labelColorMapping){
-          return labelColorMapping[the_label];
+        if (the_label in options.labelColorMapping){
+          return options.labelColorMapping[the_label];
         }
         return options.nodeOutlineFillColor ? class2darkenColor(options.nodeOutlineFillColor) : class2darkenColor(d.labels[0]);
       })
@@ -379,52 +351,6 @@ function Neo4jD3(_selector, _options) {
         return _icon ? '&#x' + _icon : d.id;
       });
   }
-
-  function appendRuleViolationToNode(node) {
-
-    var transitionDuration = 3000;
-
-    var node = node.filter(function(d){
-
-      if ('RuleViolated' in d.properties){
-        var status = d.properties.RuleViolated.toLowerCase();
-
-        if (status != 'no'){
-          return true;
-        }
-      }
-      return false
-    })
-
-    var foo = node.append('text')
-      .attr('class', 'text icon')
-      .attr('fill', '#ffa500')
-      .attr('font-size', function(d) {
-        return (.9 * options.nodeRadius) + 'px';})
-      .attr('pointer-events', 'none')
-      .attr('text-anchor', 'middle')
-      .html(function(d) {
-        var _icon = options.iconMap['times'];
-        return _icon ? '&#x' + _icon : d.id;
-      })
-
-    foo.transition()
-      .duration(transitionDuration)
-      .on("start", function repeat() {
-        d3.active(this)
-          .style('opacity', .5)
-          .transition()
-          .duration(transitionDuration)
-          .style('opacity', 1)
-          .transition()
-          .on("start", repeat);
-      })
-    return foo;
-
-
-
-  }
-
   function appendRelationship() {
     return relationship.enter()
       .append('g')
@@ -441,44 +367,16 @@ function Neo4jD3(_selector, _options) {
       });
   }
 
-  function getAmounts (relationships){
-    var amounts = [];
-
-    for (var i = 0; i < relationships.length; i++){
-      var objectProperties = relationships[i].properties;
-      if (objectProperties.hasOwnProperty('Amount')){
-        var amount = objectProperties.Amount;
-        amounts.push(+amount);
-      }
-    }
-
-    return amounts;
-  }
-
-  function createOutlineScale(relationships){
-    var amounts = getAmounts(relationships);
-    var extents = d3.extent(amounts);
-
-    var min = extents[0];
-    var max = extents[1];
-
-    var newScale = d3.scaleLinear()
-      .domain([min,max])
-      .range([.1, 3]);
-    return newScale;
-  }
-
-  function appendOutlineToRelationship(r, outlineScale) {
+  function appendOutlineToRelationship(r) {
     return r.append('path')
       .attr('class', 'outline')
       .attr('fill', '#a5abb6')
       .attr('stroke-width', function(d,i){
         return 1;
-        //return outlineScale(+d.properties.Amount);
       })
       .attr('stroke', function(d)
         {
-          return '#a5abb6'
+          return '#a5abb6';
         });
   }
 
@@ -499,7 +397,7 @@ function Neo4jD3(_selector, _options) {
         if ('RuleViolated' in d.properties){
           var status = d.properties.RuleViolated.toLowerCase();
 
-          if (status != 'no'){
+          if (status !== 'no'){
             var _icon = options.iconMap['times'];
             return _icon ? '&#x' + _icon : d.id;
           }
@@ -512,25 +410,24 @@ function Neo4jD3(_selector, _options) {
       .duration(transitionDuration)
       .on("start", function repeat() {
         d3.active(this)
-          .style('opacity', .5)
+          .style('opacity', 0.5)
           .transition()
           .duration(transitionDuration)
           .style('opacity', 1)
           .transition()
           .on("start", repeat);
-      })
+      });
 
 
     return text;
   }
 
-  function appendRelationshipToGraph(outlineScale) {
+  function appendRelationshipToGraph() {
     var relationship = appendRelationship();
 
     var text = appendTextToRelationship(relationship);
-    appendRuleViolationToNode(relationship);
 
-    var outline = appendOutlineToRelationship(relationship, outlineScale);
+    var outline = appendOutlineToRelationship(relationship);
     var overlay = appendOverlayToRelationship(relationship);
 
     return {
@@ -953,6 +850,19 @@ function tickRelationships() {
   }
 }
 
+function produceBoundingBox(textNode, relationship){
+
+    if ('RuleViolated' in relationship.properties){
+      var status = relationship.properties.RuleViolated.toLowerCase();
+
+      if (status !== 'no'){
+        return {x: 0, y: 0, width: 17, height: 0};
+      }
+    }
+
+  return textNode.node().getBBox();
+}
+
 function tickRelationshipsOutlines() {
   relationship.each(function(relationship) {
 
@@ -963,16 +873,7 @@ function tickRelationshipsOutlines() {
     var padding = 0;
 
 
-    var textBoundingBox = text.node().getBBox()
-
-    if ('RuleViolated' in relationship.properties){
-      var status = relationship.properties.RuleViolated.toLowerCase();
-
-      if (status != 'no'){
-        textBoundingBox = {x: 0, y: 0, width: 17, height: 0}
-      }
-    }
-
+    var textBoundingBox = produceBoundingBox(text, relationship);
 
     outline.attr('d', function(d) {
       var center = { x: 0, y: 0 },
@@ -1074,7 +975,6 @@ function unitaryVector(source, target, newLength) {
 
 function updateWithD3Data(d3Data) {
   // marker
-  options.globalDict = ruleViolationDict(d3Data.relationships);
   updateNodesAndRelationships(d3Data.nodes, d3Data.relationships);
 }
 
@@ -1122,8 +1022,7 @@ function updateRelationships(r) {
   relationship = svgRelationships.selectAll('.relationship')
     .data(relationships, function(d) { return d.id; });
 
-  var outlineScale = createOutlineScale(relationships);
-  var relationshipEnter = appendRelationshipToGraph(outlineScale);
+  var relationshipEnter = appendRelationshipToGraph();
 
   relationship = relationshipEnter.relationship.merge(relationship);
   relationshipOutline = svg.selectAll('.relationship .outline');
