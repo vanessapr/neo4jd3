@@ -212,6 +212,7 @@ function Neo4jD3(_selector, _options) {
     .on('end', dragEnded));
   }
   function truncateText(str, length) {
+    str = str || '';
 
     var ending = '...';
 
@@ -386,40 +387,15 @@ function Neo4jD3(_selector, _options) {
   }
 
   function appendTextToRelationship(r) {
-      var text = r.append('text')
-      .attr('class', 'text icon')
-      .attr('fill', '#ffa500')
-      .attr('font-size', '15px')
-      .attr('x', '-5px')
-      .attr('y', '2px')
-      .html(function(d) {
-
-        if ('RuleViolated' in d.properties){
-          var status = d.properties.RuleViolated.toLowerCase();
-
-          if (status !== 'no'){
-            var _icon = options.iconMap['times'];
-            return _icon ? '&#x' + _icon : d.id;
-          }
-        }
-        return '';
+    return r.append('text')
+      .attr('class', 'text')
+      .attr('fill', '#000000')
+      .attr('font-size', '8px')
+      .attr('pointer-events', 'none')
+      .attr('text-anchor', 'middle')
+      .text(function(d) {
+        return d.type;
       });
-
-    var transitionDuration = 2000;
-  var bar = text.transition()
-      .duration(transitionDuration)
-      .on("start", function repeat() {
-        d3.active(this)
-          .style('opacity', 0.5)
-          .transition()
-          .duration(transitionDuration)
-          .style('opacity', 1)
-          .transition()
-          .on("start", repeat);
-      });
-
-
-    return text;
   }
 
   function appendRelationshipToGraph() {
