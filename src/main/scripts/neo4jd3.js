@@ -24,7 +24,13 @@ function Neo4jD3(_selector, _options) {
       relationshipColor: '#a5abb6',
       zoomFit: false,
       labelColorMapping: createLabelColorMapping(),
-      labelProperty: 'name'
+      labelProperty: 'name',
+      imageSize: {
+        height: '30px',
+        width: '30px',
+        x: '-15px',
+        y: '-16px',
+      }
     },
     VERSION = '0.0.1';
 
@@ -73,22 +79,21 @@ function Neo4jD3(_selector, _options) {
   }
 
   function appendImageToNode(node) {
-
     return node.append('image')
       .attr('height', function(d) {
-        return icon(d) ? '24px': '30px';
+        return icon(d) ? '24px': options.imageSize.height;
       })
       .attr('x', function(d) {
-        return icon(d) ? '5px': '-15px';
+        return icon(d) ? '5px': options.imageSize.x;
       })
       .attr('xlink:href', function(d) {
         return image(d);
       })
       .attr('y', function(d) {
-        return icon(d) ? '5px': '-16px';
+        return icon(d) ? '5px': options.imageSize.y;
       })
       .attr('width', function(d) {
-        return icon(d) ? '24px': '30px';
+        return icon(d) ? '24px': options.imageSize.width;
       });
   }
 
@@ -105,16 +110,13 @@ function Neo4jD3(_selector, _options) {
       .html('<strong>' + property + '</strong>' + (value ? (': ' + value) : ''));
     if (!value) {
       elem.style('background-color', function(d) {
-
           var theProperty = property.toLowerCase();
 
-          if (theProperty in options.labelColorMapping){
+          if (theProperty in options.labelColorMapping) {
             return options.labelColorMapping[theProperty];
           }
 
         return options.nodeOutlineFillColor ? options.nodeOutlineFillColor : (isNode ? class2color(property) : defaultColor());
-
-
       })
         .style('border-color', function(d) {
           var theProperty = property.toLowerCase();
@@ -123,12 +125,9 @@ function Neo4jD3(_selector, _options) {
             return options.labelColorMapping[theProperty];
           }
           return options.nodeOutlineFillColor ? class2darkenColor(options.nodeOutlineFillColor) : (isNode ? class2darkenColor(property) : defaultDarkenColor());
-
-
         })
         .style('color', function(d) {
           return options.nodeOutlineFillColor ? class2darkenColor(options.nodeOutlineFillColor) : '#fff';
-
         });
     }
   }
@@ -212,6 +211,7 @@ function Neo4jD3(_selector, _options) {
     .on('drag', dragged)
     .on('end', dragEnded));
   }
+
   function truncateText(str, length) {
     str = str || '';
 
@@ -265,7 +265,6 @@ function Neo4jD3(_selector, _options) {
       .attr('alignment-baseline', 'central');
   }
 
-
   function appendNodeToGraph() {
     var n = appendNode();
 
@@ -288,8 +287,6 @@ function Neo4jD3(_selector, _options) {
   }
 
   function appendOutlineToNode(node) {
-
-
     return node.append('circle')
       .attr('class', 'outline')
       .attr('r', options.nodeRadius)
@@ -353,6 +350,7 @@ function Neo4jD3(_selector, _options) {
         return _icon ? '&#x' + _icon : d.id;
       });
   }
+  
   function appendRelationship() {
     return relationship.enter()
       .append('g')
