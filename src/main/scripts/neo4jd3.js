@@ -23,7 +23,8 @@ function Neo4jD3(_selector, _options) {
       nodeRadius: 75,
       relationshipColor: '#a5abb6',
       zoomFit: false,
-      labelColorMapping: createLabelColorMapping()
+      labelColorMapping: createLabelColorMapping(),
+      labelProperty: 'name'
     },
     VERSION = '0.0.1';
 
@@ -252,7 +253,7 @@ function Neo4jD3(_selector, _options) {
     g.append('text')
       .text(function(node) {
         var x = node.labels;
-        return truncateText(node.properties.name, 13);
+        return truncateText(node.properties[options.labelProperty], 13);
       })
       .attr('font-size', 10)
       .attr('x', function(node){
