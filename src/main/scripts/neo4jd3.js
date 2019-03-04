@@ -241,9 +241,7 @@ function Neo4jD3(_selector, _options) {
       .attr("width", '80px')
       .attr("height", '20px')
       .style("fill", function(d){
-
         return "#bdc3c7";
-
       })
       .attr('y', 24)
       .attr('x', -40)
@@ -275,9 +273,7 @@ function Neo4jD3(_selector, _options) {
       appendTextToNode(n);
     }
 
-
     if (options.images) {
-
       appendImageToNode(n);
     }
 
@@ -350,7 +346,7 @@ function Neo4jD3(_selector, _options) {
         return _icon ? '&#x' + _icon : d.id;
       });
   }
-  
+
   function appendRelationship() {
     return relationship.enter()
       .append('g')
