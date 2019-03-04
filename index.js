@@ -1,1 +1,1 @@
-module.exports = require('./dist/js/neo4jd3.min.js');
+module.exports = require('./dist/js/neo4jd3.js');
