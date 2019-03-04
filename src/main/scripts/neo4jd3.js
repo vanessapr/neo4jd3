@@ -260,7 +260,12 @@ function Neo4jD3(_selector, _options) {
       })
       .attr('y', 33)
       .attr('text-anchor', 'middle')
-      .attr('alignment-baseline', 'central');
+      .attr('alignment-baseline', 'central')
+      .on('click', function(d) {
+        if (typeof options.onNodeClick === 'function') {
+          options.onNodeTextClick(d);
+        }
+      });
   }
 
   function appendNodeToGraph() {
