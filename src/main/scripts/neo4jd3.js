@@ -822,15 +822,6 @@ function tickRelationships() {
 }
 
 function produceBoundingBox(textNode, relationship){
-
-    if ('RuleViolated' in relationship.properties){
-      var status = relationship.properties.RuleViolated.toLowerCase();
-
-      if (status !== 'no'){
-        return {x: 0, y: 0, width: 17, height: 0};
-      }
-    }
-
   return textNode.node().getBBox();
 }
 
@@ -1012,14 +1003,19 @@ function version() {
 }
 
 function zoomFit(transitionDuration) {
-  var bounds = svg.node().getBBox(),
-    parent = svg.node().parentElement.parentElement,
-    fullWidth = parent.clientWidth,
-    fullHeight = parent.clientHeight,
-    width = bounds.width,
-    height = bounds.height,
-    midX = bounds.x + width / 2,
-    midY = bounds.y + height / 2;
+  var bounds = svg.node().getBBox();
+  var parent = svg.node().parentElement.parentElement;
+
+  if (!parent) {
+    return;
+  }
+
+  var fullWidth = parent.clientWidth;
+  var fullHeight = parent.clientHeight;
+  var width = bounds.width;
+  var height = bounds.height;
+  var midX = bounds.x + width / 2;
+  var midY = bounds.y + height / 2;
 
   if (width === 0 || height === 0) {
     return; // nothing to fit
