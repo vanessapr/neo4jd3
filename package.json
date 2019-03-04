@@ -1,6 +1,6 @@
 {
   "name": "neo4jd3",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Neo4jD3",
   "main": "dist/neo4jd3.js",
   "bugs": {
