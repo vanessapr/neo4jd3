@@ -228,12 +228,11 @@ function Neo4jD3(_selector, _options) {
     }
   }
 
-  function calculateXLocation(name){
+  function calculateXLocation(name) {
     return name.length;
-
   }
 
-  function appendNodeNameText(node){
+  function appendNodeNameText(node) {
     // going to need to link this to node width/ hieght at some point
     var g = node.append('g');
 
@@ -262,10 +261,43 @@ function Neo4jD3(_selector, _options) {
       .attr('text-anchor', 'middle')
       .attr('alignment-baseline', 'central')
       .on('click', function(d) {
-        if (typeof options.onNodeClick === 'function') {
+        if (typeof options.onNodeTextClick === 'function') {
           options.onNodeTextClick(d);
         }
       });
+  }
+
+  function appendNodeInfo(node) {
+    if (!options.onNodeInfoClick || !options.displayInfoIcon) {
+      return;
+    }
+
+    var g = node.append('g')
+      .attr('class', 'info')
+      .attr('transform', 'translate(9, -28)')
+      .attr("visibility", function(d) {
+        return options.displayInfoIcon(d) ? "" : "hidden";
+      })
+      .on('click', function(d) {
+        if (typeof options.onNodeInfoClick === 'function') {
+          options.onNodeInfoClick(d);
+        }
+      });
+
+    g.append("rect")
+      .attr("width", '20px')
+      .attr("height", '20px')
+      .style("fill", "#444")
+      .style("stroke", "#54b3ff")
+      .attr('rx', 10)
+      .attr('ry', 10);
+    
+    g.append('text')
+      .text('i')
+      .attr('fill', 'white')
+      .attr('font-size', 11)
+      .attr('x', '9')
+      .attr('y', '14');
   }
 
   function appendNodeToGraph() {
@@ -282,7 +314,8 @@ function Neo4jD3(_selector, _options) {
       appendImageToNode(n);
     }
 
-    var text = appendNodeNameText(n);
+    appendNodeNameText(n);
+    appendNodeInfo(n);
 
     return n;
   }
