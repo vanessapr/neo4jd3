@@ -1,12 +1,12 @@
 {
   "name": "neo4jd3",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Neo4jD3",
   "main": "dist/neo4jd3.js",
   "bugs": {
-    "url": "https://github.com/eisman/neo4jd3/issues"
+    "url": "https://github.com/elie222/neo4jd3/issues"
   },
-  "homepage": "https://github.com/eisman/neo4jd3",
+  "homepage": "https://github.com/elie222/neo4jd3",
   "directories": {
     "test": "test"
   },
@@ -20,12 +20,12 @@
     "graph visualization"
   ],
   "author": {
-    "name": "Eduardo Eisman <eeisman@gmail.com>",
-    "url": "https://github.com/eisman"
+    "name": "Elie Steinbock <elie@dappworks.co>",
+    "url": "https://github.com/elie222"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/eisman/neo4jd3.git"
+    "url": "https://github.com/elie222/neo4jd3.git"
   },
   "license": "MIT",
   "dependencies": {
