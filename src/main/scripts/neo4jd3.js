@@ -792,6 +792,8 @@ function rotate(cx, cy, x, y, angle) {
 }
 
 function rotatePoint(c, p, angle) {
+  // console.log('rotatePoint', c, p, angle)
+
   return rotate(c.x, c.y, p.x, p.y, angle);
 }
 
