@@ -1,5 +1,5 @@
 {
-  "name": "neo4jd3",
+  "name": "@elie222/neo4jd3",
   "version": "0.1.0",
   "description": "Neo4jD3",
   "main": "dist/neo4jd3.js",
