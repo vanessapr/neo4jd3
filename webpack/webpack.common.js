@@ -1,4 +1,5 @@
 const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const paths = {

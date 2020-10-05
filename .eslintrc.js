@@ -3,6 +3,9 @@ module.exports = {
     commonjs: true,
     es2020: true,
   },
+  globals: {
+    window: true,
+  },
   extends: ['airbnb-base'],
   parserOptions: {
     ecmaVersion: 11,
@@ -10,5 +13,6 @@ module.exports = {
   },
   rules: {
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+    'max-len': ['error', { code: 120 }],
   },
 };
