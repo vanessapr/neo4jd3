@@ -1,19 +1,22 @@
 {
-  "name": "@elie222/neo4jd3",
+  "name": "@vanessapr/neo4jd3",
   "version": "0.1.0",
   "description": "Neo4jD3",
-  "main": "dist/neo4jd3.js",
+  "main": "dist/neo4jd3.min.js",
+  "files": [
+    "dist/",
+    "README.md"
+  ],
   "bugs": {
-    "url": "https://github.com/elie222/neo4jd3/issues"
+    "url": "https://github.com/vanessapr/neo4jd3/issues"
   },
-  "homepage": "https://github.com/elie222/neo4jd3",
+  "homepage": "https://github.com/vanessapr/neo4jd3",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "start": "gulp",
-    "dev": "webpack-dev-server --env=dev --config webpack/webpack.config.js",
-    "test": "gulp test"
+    "start": "webpack-dev-server --env=dev --config webpack/webpack.config.js",
+    "build": "webpack --env=prod --config webpack/webpack.config.js"
   },
   "keywords": [
     "neo4j",
@@ -21,12 +24,12 @@
     "graph visualization"
   ],
   "author": {
-    "name": "Elie Steinbock <elie@dappworks.co>",
-    "url": "https://github.com/elie222"
+    "name": "Vanessa P.R. <vanessapr.85@gmail.com>",
+    "url": "https://github.com/vanessapr"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/elie222/neo4jd3.git"
+    "url": "https://github.com/vanessapr/neo4jd3.git"
   },
   "license": "MIT",
   "devDependencies": {
@@ -41,6 +44,7 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^0.11.3",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",

@@ -1,6 +1,7 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { paths, common } = require('./webpack.common');
 
 const prodConfig = merge([
@@ -21,6 +22,19 @@ const prodConfig = merge([
       amd: 'd3',
       root: 'd3',
     },
+    module: {
+      rules: [
+        {
+          test: /\.scss$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        },
+      ],
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'neo4jd3.min.css',
+      }),
+    ],
   },
   common(),
 ]);
