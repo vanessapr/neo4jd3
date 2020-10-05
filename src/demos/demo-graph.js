@@ -1,6 +1,7 @@
 import Neo4jd3 from '../graph/neo4jd3';
 import data from './data';
 
+// eslint-disable-next-line no-unused-vars
 const neo4jd3 = new Neo4jd3('#neo4jd3', {
   highlight: [
     {
@@ -18,15 +19,13 @@ const neo4jd3 = new Neo4jd3('#neo4jd3', {
   // neo4jDataUrl: 'json/neo4jData.json',
   nodeRadius: 25,
   onNodeDoubleClick(node) {
-    const maxNodes = 5;
-
     switch (node.id) {
       case '25':
         // Google
         window.open(node.properties.url, '_blank');
         break;
       default:
-        neo4jd3.updateWithD3Data(neo4jd3.randomD3Data(node, maxNodes));
+        console.info('clic on node: [%s]', node.id);
         break;
     }
   },

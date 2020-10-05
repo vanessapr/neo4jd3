@@ -14,5 +14,6 @@ module.exports = {
   rules: {
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'max-len': ['error', { code: 120 }],
+    'import/prefer-default-export': 'off',
   },
 };
