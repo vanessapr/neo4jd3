@@ -13,9 +13,11 @@ const prodConfig = merge([
     },
     output: {
       path: path.join(paths.root, 'dist/'),
-      filename: 'neo4jd3.min.js',
-      library: ['neo4jd3'],
+      filename: '[name].min.js',
+      library: 'Neo4jd3',
       libraryTarget: 'umd',
+      libraryExport: 'default',
+      globalObject: 'this',
     },
     externals: {
       commonjs: 'd3',

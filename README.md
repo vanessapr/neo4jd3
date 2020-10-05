@@ -13,7 +13,6 @@ This is a fork of the following package: [https://github.com/eisman/neo4jd3](htt
 - Info panel that shows nodes and relationships information on hover.
 - Double click callbacks.
 - Custom node colors by node type.
-- Text nodes + [Font Awesome](http://fontawesome.io/) icon nodes + SVG image nodes (e.g. using [Twitter Emoji](https://github.com/twitter/twemoji))).
 - Sticky nodes (drag to stick, single click to unstick).
 - Dynamic graph update (e.g. double click a node to expand it).
 - Highlight nodes on init.
@@ -26,13 +25,8 @@ This is a fork of the following package: [https://github.com/eisman/neo4jd3](htt
 First of all, make sure you have ruby and sass gem installed. Then, clone the repository, install all dependencies, build and serve the project.
 
 ```bash
-> gem install sass
-> git clone https://github.com/eisman/neo4jd3.git
-> npm install
-> gulp
+npm add @vanessapr85/neo4jd3
 ```
-
-Open `http://localhost:8080` in your favorite browser.
 
 ## Documentation
 
@@ -45,8 +39,6 @@ var neo4jd3 = new Neo4jd3(".selector", options);
 | Parameter                     | Type       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ----------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **highlight**                 | _array_    | Highlight several nodes of the graph.<br>Example:<br>`[`<br>&nbsp;&nbsp;&nbsp;&nbsp;`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`class: 'Project',`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`property: 'name',`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`value: 'neo4jd3'`<br>&nbsp;&nbsp;&nbsp;&nbsp;`}`<br>`]`                                                                                                                                                                                            |
-| **icons**                     | _object_   | Map node labels to [Font Awesome icons](http://fontawesome.io/icons).<br>Example:<br>`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'BirthDate': 'birthday-cake',`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'Password': 'lock',`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'Phone': 'phone',`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'User': 'user'`<br>`}`.                                                                                                                                                                                                                                      |
-| **images**                    | _object_   | Map node labels to SVG images (e.g. using [Twitter Emoji](https://github.com/twitter/twemoji)).<br>Example:<br>`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'Address': 'img/twemoji/1f3e0.svg',`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'BirthDate': 'img/twemoji/1f382.svg',`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'Password': 'img/twemoji/1f511.svg',`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'Project': 'img/twemoji/2198.svg',`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'Project\|name\|neo4jd3': 'img/twemoji/2196.svg',`<br>&nbsp;&nbsp;&nbsp;&nbsp;`'User': 'img/twemoji/1f600.svg'`<br>`}`. |
 | **infoPanel**                 | _boolean_  | Show the information panel: `true`, `false`. Default: `true`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | **minCollision**              | _int_      | Minimum distance between nodes. Default: 2 \* _nodeRadius_.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | **neo4jData**                 | _object_   | Graph data in [Neo4j data format](#neo4j-data-format).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -182,46 +174,6 @@ var neo4jd3 = new Neo4jd3("#neo4jd3", {
       value: "eisman"
     }
   ],
-  icons: {
-    Api: "gear",
-    BirthDate: "birthday-cake",
-    Cookie: "paw",
-    Email: "at",
-    Git: "git",
-    Github: "github",
-    Ip: "map-marker",
-    Issues: "exclamation-circle",
-    Language: "language",
-    Options: "sliders",
-    Password: "asterisk",
-    Phone: "phone",
-    Project: "folder-open",
-    SecurityChallengeAnswer: "commenting",
-    User: "user",
-    zoomFit: "arrows-alt",
-    zoomIn: "search-plus",
-    zoomOut: "search-minus"
-  },
-  images: {
-    Address: "img/twemoji/1f3e0.svg",
-    BirthDate: "img/twemoji/1f5d3.svg",
-    Cookie: "img/twemoji/1f36a.svg",
-    CreditCard: "img/twemoji/1f4b3.svg",
-    Device: "img/twemoji/1f4bb.svg",
-    Email: "img/twemoji/2709.svg",
-    Git: "img/twemoji/1f5c3.svg",
-    Github: "img/twemoji/1f5c4.svg",
-    icons: "img/twemoji/1f38f.svg",
-    Ip: "img/twemoji/1f4cd.svg",
-    Issues: "img/twemoji/1f4a9.svg",
-    Language: "img/twemoji/1f1f1-1f1f7.svg",
-    Options: "img/twemoji/2699.svg",
-    Password: "img/twemoji/1f511.svg",
-    "Project|name|d3": "img/twemoji/32-20e3.svg",
-    "Project|name|neo4j": "img/twemoji/33-20e3.svg",
-    "Project|name|neo4jd3": "img/twemoji/31-20e3.svg",
-    User: "img/twemoji/1f600.svg"
-  },
   minCollision: 60,
   neo4jDataUrl: "json/neo4jData.json",
   nodeRadius: 25,
@@ -232,9 +184,7 @@ var neo4jd3 = new Neo4jd3("#neo4jd3", {
         window.open(node.properties.url, "_blank");
         break;
       default:
-        var maxNodes = 5,
-          data = neo4jd3.randomD3Data(node, maxNodes);
-        neo4jd3.updateWithD3Data(data);
+        console.info('click...');
         break;
     }
   },
