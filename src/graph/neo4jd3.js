@@ -247,9 +247,7 @@ function Neo4jD3(_selector, _options) {
   function appendRingToNode(svgNode) {
     return svgNode.append('circle')
       .attr('class', 'ring')
-      .attr('r', options.nodeRadius * 1.16)
-      .append('title')
-      .text((d) => Utils.toString(d));
+      .attr('r', options.nodeRadius * 1.16);
   }
 
   function appendOutlineToNode(svgNode) {
@@ -257,9 +255,7 @@ function Neo4jD3(_selector, _options) {
       .attr('class', 'outline')
       .attr('r', options.nodeRadius)
       .style('fill', (d) => d.color)
-      .style('stroke', (d) => Utils.darkenColor(d.color))
-      .append('title')
-      .text((d) => Utils.toString(d));
+      .style('stroke', (d) => Utils.darkenColor(d.color));
   }
 
   function appendNodeInfo(svgNode) {
