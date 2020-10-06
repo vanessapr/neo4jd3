@@ -2,6 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const { paths, common } = require('./webpack.common');
 
 const prodConfig = merge([
@@ -20,9 +21,12 @@ const prodConfig = merge([
       globalObject: 'this',
     },
     externals: {
-      commonjs: 'd3',
-      amd: 'd3',
-      root: 'd3',
+      d3: {
+        commonjs: 'd3',
+        commonjs2: 'd3',
+        amd: 'd3',
+        root: 'd3',
+      },
     },
     module: {
       rules: [
@@ -35,6 +39,13 @@ const prodConfig = merge([
     plugins: [
       new MiniCssExtractPlugin({
         filename: 'neo4jd3.min.css',
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.join(paths.root, 'src/graph'), to: path.join(paths.root, 'dist'),
+          },
+        ],
       }),
     ],
   },

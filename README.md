@@ -31,7 +31,11 @@ npm add @vanessapr85/neo4jd3
 ## Documentation
 
 ```javascript
-var neo4jd3 = new Neo4jd3(".selector", options);
+import * as d3 from 'd3';
+import '@vanessapr85/neo4jd3/dist/neo4jd3.min.css';
+import Neo4jd3 from '@vanessapr85/neo4jd3';
+
+const neo4jd3 = new Neo4jd3('.selector', options);
 ```
 
 ### Options
@@ -177,16 +181,8 @@ var neo4jd3 = new Neo4jd3("#neo4jd3", {
   minCollision: 60,
   neo4jDataUrl: "json/neo4jData.json",
   nodeRadius: 25,
-  onNodeDoubleClick: function(node) {
-    switch (node.id) {
-      case "25":
-        // Google
-        window.open(node.properties.url, "_blank");
-        break;
-      default:
-        console.info('click...');
-        break;
-    }
+  onNodeDoubleClick: function(nodeSvg, node, event) {
+    console.info('clic on node: [%s]', node.id);
   },
   zoomFit: true
 });
