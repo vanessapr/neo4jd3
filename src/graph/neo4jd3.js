@@ -148,7 +148,7 @@ function Neo4jD3(_selector, _options) {
     }
 
     if (typeof options.onNodeDragEnd === 'function') {
-      options.onNodeDragEnd(d);
+      options.onNodeDragEnd(this, d, event);
     }
   }
 
@@ -166,7 +166,7 @@ function Neo4jD3(_selector, _options) {
     /* eslint-enable */
 
     if (typeof options.onNodeDragStart === 'function') {
-      options.onNodeDragStart(d);
+      options.onNodeDragStart(this, d, event);
     }
   }
 
@@ -206,36 +206,39 @@ function Neo4jD3(_selector, _options) {
 
         return classes;
       })
-      .on('click', (event, d) => {
-        // d.fx = d.fy = null;
+      .on('click', function onNodeClick(event, d) {
+        /* eslint-disable */
+        d.fx = null;
+        d.fy = null;
+        /* eslint-enable */
 
         if (typeof options.onNodeClick === 'function') {
-          options.onNodeClick(d);
+          options.onNodeClick(this, d, event);
         }
       })
-      .on('dblclick', (event, d) => {
+      .on('dblclick', function onNodeDoubleClick(event, d) {
         stickNode(event, d);
 
         if (typeof options.onNodeDoubleClick === 'function') {
-          options.onNodeDoubleClick(d);
+          options.onNodeDoubleClick(this, d, event);
         }
       })
-      .on('mouseenter', (event, d) => {
+      .on('mouseenter', function onNodeMouseEnter(event, d) {
         if (info) {
           updateInfo(d);
         }
 
         if (typeof options.onNodeMouseEnter === 'function') {
-          options.onNodeMouseEnter(d);
+          options.onNodeMouseEnter(this, d, event);
         }
       })
-      .on('mouseleave', (event, d) => {
+      .on('mouseleave', function onNodeMouseLeave(event, d) {
         if (info) {
           clearInfo(d);
         }
 
         if (typeof options.onNodeMouseLeave === 'function') {
-          options.onNodeMouseLeave(d);
+          options.onNodeMouseLeave(this, d, event);
         }
       })
       .call(d3.drag()
@@ -266,9 +269,9 @@ function Neo4jD3(_selector, _options) {
     const g = svgNode.append('g')
       .attr('class', 'info')
       .attr('transform', 'translate(9, -28)')
-      .on('click', (d) => {
+      .on('click', function onNodeInfoClick(event, d) {
         if (typeof options.onNodeInfoClick === 'function') {
-          options.onNodeInfoClick(d);
+          options.onNodeInfoClick(this, d, event);
         }
       });
 
@@ -308,9 +311,9 @@ function Neo4jD3(_selector, _options) {
     return relationship.enter()
       .append('g')
       .attr('class', 'relationship')
-      .on('dblclick', (d) => {
+      .on('dblclick', function onRelationshipDoubleClick(event, d) {
         if (typeof options.onRelationshipDoubleClick === 'function') {
-          options.onRelationshipDoubleClick(d);
+          options.onRelationshipDoubleClick(this, d, event);
         }
       })
       .on('mouseenter', (event, d) => {

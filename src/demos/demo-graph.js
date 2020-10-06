@@ -1,3 +1,4 @@
+import * as d3 from 'd3';
 import Neo4jd3 from '../graph/neo4jd3';
 import data from './data';
 
@@ -18,16 +19,19 @@ const neo4jd3 = new Neo4jd3('#neo4jd3', {
   neo4jData: data,
   // neo4jDataUrl: 'json/neo4jData.json',
   nodeRadius: 25,
-  onNodeDoubleClick(node) {
-    switch (node.id) {
-      case '25':
-        // Google
-        window.open(node.properties.url, '_blank');
-        break;
-      default:
-        console.info('clic on node: [%s]', node.id);
-        break;
+  onNodeClick: (nodeSvg, node, event) => {
+    console.info('node', nodeSvg, 'data', node, 'event', event);
+
+    if (d3.select(nodeSvg).attr('class').indexOf('selected') > 0) {
+      d3.select(nodeSvg)
+        .attr('class', 'node');
+    } else {
+      d3.select(nodeSvg)
+        .attr('class', 'node selected');
     }
+  },
+  onNodeDoubleClick(nodeSvg, node) {
+    console.info('clic on node: [%s]', node.id);
   },
   onRelationshipDoubleClick(relationship) {
     console.info(`double click on relationship: ${JSON.stringify(relationship)}`);
