@@ -1,6 +1,6 @@
 {
   "name": "@vanessapr85/neo4jd3",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Neo4jD3",
   "main": "dist/neo4jd3.min.js",
   "files": [
@@ -37,6 +37,7 @@
     "@babel/preset-env": "^7.11.5",
     "babel-loader": "^8.1.0",
     "bootstrap": "^3.3.7",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.2.0",
     "css-loader": "^4.3.0",
     "d3": "^6.2.0",
