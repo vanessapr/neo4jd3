@@ -45,3 +45,27 @@ export const unitaryVector = (source, target, newLength) => {
 };
 
 export const darkenColor = (color) => d3.rgb(color).darker(1);
+
+export const invertColor = (hexColor) => {
+  let color = hexColor;
+
+  if (hexColor.indexOf('#') === 0) {
+    color = hexColor.slice(1);
+  }
+
+  if (color.length === 3) {
+    color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2];
+  }
+
+  if (color.length !== 6) {
+    throw new Error('Invalid HEX color');
+  }
+
+  const r = parseInt(color.slice(0, 2), 16);
+  const g = parseInt(color.slice(2, 4), 16);
+  const b = parseInt(color.slice(4, 6), 16);
+
+  return (r * 0.299 + g * 0.587 + b * 0.114) > 186
+    ? '#000000'
+    : '#FFFFFF';
+};

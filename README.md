@@ -4,7 +4,7 @@ This is a fork of the following package: [https://github.com/eisman/neo4jd3](htt
 
 [Neo4j](https://github.com/neo4j) graph visualization using [D3.js](https://github.com/d3/d3).
 
-![neo3jd3.js](https://eisman.github.io/neo4jd3/img/neo4jd3.jpg?v=0.0.5)
+![neo3jd3.js](https://i.ibb.co/qFfq5tn/Screen-Shot-2020-10-06-at-19-26-55.png)
 
 ## Features
 

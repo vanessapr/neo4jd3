@@ -5,7 +5,7 @@ const data = {
       graph: {
         nodes: [{
           id: '1',
-          labels: ['User'],
+          labels: ['ContentType.user'],
           properties: {
             userId: 'eisman',
           },

@@ -17,8 +17,10 @@ const neo4jd3 = new Neo4jd3('#neo4jd3', {
   ],
   minCollision: 60,
   neo4jData: data,
+  infoPanel: true,
   // neo4jDataUrl: 'json/neo4jData.json',
-  nodeRadius: 25,
+  // nodeRadius: 25,
+  onLabelNode: (node) => node.properties?.name || (node.labels ? node.labels[0] : ''),
   onNodeClick: (nodeSvg, node, event) => {
     console.info('node', nodeSvg, 'data', node, 'event', event);
 

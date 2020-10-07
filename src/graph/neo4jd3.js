@@ -3,17 +3,17 @@ import * as Utils from './utils';
 import './neo4jd3.scss';
 
 const DEFAULT_OPTIONS = {
-  arrowSize: 2,
+  arrowSize: 5,
   highlight: undefined,
   minCollision: undefined,
   neo4jData: undefined,
   neo4jDataUrl: undefined,
   nodeOutlineFillColor: undefined,
-  nodeRadius: 75,
+  nodeRadius: 25,
   relationshipColor: '#a5abb6',
   zoomFit: false,
   labelProperty: 'name',
-  infoPanel: true,
+  infoPanel: false,
 };
 
 const COLORS = [
@@ -176,7 +176,6 @@ function Neo4jD3(_selector, _options) {
 
   function updateInfo(d) {
     clearInfo();
-
     appendInfoElement('class', d);
     appendInfoElementProperty('property', '&lt;id&gt;', d.id);
 
@@ -291,12 +290,34 @@ function Neo4jD3(_selector, _options) {
       .attr('y', '14');
   }
 
+  function appendTextToNode(svgNode) {
+    svgNode.append('text')
+      .text((d) => {
+        let label;
+
+        if (typeof options.onLabelNode === 'function') {
+          label = options.onLabelNode(d);
+        } else {
+          label = d.properties?.name || (d.labels ? d.labels[0] : '');
+        }
+
+        return label.length > 10 ? Utils.truncateText(label, 10) : label;
+      })
+      .attr('class', 'text')
+      .attr('font-size', '10px')
+      .attr('fill', (d) => Utils.invertColor(d.color))
+      .attr('pointer-events', 'none')
+      .attr('text-anchor', 'middle')
+      .attr('dy', () => options.nodeRadius / ((options.nodeRadius * 25) / 100));
+  }
+
   function appendNodeToGraph() {
     const n = appendNode();
 
     appendRingToNode(n);
     appendOutlineToNode(n);
     appendNodeInfo(n);
+    appendTextToNode(n);
 
     return n;
   }
@@ -326,9 +347,7 @@ function Neo4jD3(_selector, _options) {
   function appendOutlineToRelationship(r) {
     return r.append('path')
       .attr('class', 'outline')
-      .attr('fill', '#a5abb6')
-      .attr('stroke-width', 1)
-      .attr('stroke', '#a5abb6');
+      .attr('fill', '#a5abb6');
   }
 
   function appendOverlayToRelationship(r) {
