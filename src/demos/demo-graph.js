@@ -38,5 +38,22 @@ const neo4jd3 = new Neo4jd3('#neo4jd3', {
   onRelationshipDoubleClick(relationship) {
     console.info(`double click on relationship: ${JSON.stringify(relationship)}`);
   },
+  // onDisplayInfo: (infoSvg, node) => {
+  //   let colorNode;
+  //   let property;
+
+  //   if (node.labels) {
+  //     [property] = node.labels;
+  //     colorNode = node.color;
+  //   } else {
+  //     colorNode = '#808080';
+  //     property = node.type;
+  //   }
+
+  //   infoSvg.append('span')
+  //     .html(property)
+  //     .style('background-color', colorNode)
+  //     .style('color', neo4jd3.invertColor(colorNode));
+  // },
   zoomFit: false,
 });

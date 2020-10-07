@@ -18,7 +18,7 @@ body {
     padding: 10px;
     position: absolute;
 
-    a {
+    span {
         border: 1px solid;
         display: inline-block;
         font-size: 14px;
@@ -38,13 +38,13 @@ body {
         }
     }
 
-    a.btn {
+    span.btn {
         margin-left: 5px;
         margin-top: 5px;
         opacity: 1;
     }
 
-    a.info {
+    span.info {
         background-color: rgb(165, 171, 182);
         border: 1px solid rgb(154, 161, 172);
         color: white;

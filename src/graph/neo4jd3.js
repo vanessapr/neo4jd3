@@ -109,29 +109,25 @@ function Neo4jD3(_selector, _options) {
   function appendInfoElement(className, nodeData) {
     let colorNode;
     let property;
-    const elem = info.append('a');
 
     if (nodeData.labels) {
       [property] = nodeData.labels;
       colorNode = nodeData.color;
     } else {
-      colorNode = 'gray';
+      colorNode = '#808080';
       property = nodeData.type;
     }
 
-    elem.attr('href', '#')
+    info.append('span')
       .attr('class', className)
       .html(`<strong>${property}</strong>`)
       .style('background-color', colorNode)
       .style('border-color', Utils.darkenColor(colorNode))
-      .style('color', '#fff');
+      .style('color', Utils.invertColor(colorNode));
   }
 
   function appendInfoElementProperty(cls, property, value) {
-    const elem = info.append('a');
-
-    elem.attr('href', '#')
-      .attr('class', cls)
+    info.append('span').attr('class', cls)
       .html(`<strong>${property}</strong> ${value}`);
   }
 
@@ -176,6 +172,12 @@ function Neo4jD3(_selector, _options) {
 
   function updateInfo(d) {
     clearInfo();
+
+    if (typeof options.onDisplayInfo === 'function') {
+      options.onDisplayInfo(info, d);
+      return;
+    }
+
     appendInfoElement('class', d);
     appendInfoElementProperty('property', '&lt;id&gt;', d.id);
 
@@ -744,6 +746,8 @@ function Neo4jD3(_selector, _options) {
     updateWithD3Data,
     updateWithNeo4jData,
     version,
+    invertColor: Utils.invertColor,
+    darkenColor: Utils.darkenColor,
   };
 }
 
